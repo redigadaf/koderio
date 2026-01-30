@@ -57,7 +57,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[380vh] py-8 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -69,7 +69,7 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +78,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row mb-20 space-x-10 md:space-x-20 ">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +87,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -103,15 +103,23 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-muted-foreground">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
+    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9]">
+          <span className="block text-gray-900 dark:text-white">We Power SaaS</span>
+          <span className="block text-purple-600 dark:text-purple-500" style={{ color: '#9333ea' }}>
+            with Design
+          </span>
+        </h1>
+        <p className="max-w-2xl text-lg md:text-2xl mt-8 text-gray-600 leading-relaxed font-medium">
+          World-class development. One flat monthly fee.
+          <span className="block mt-2 ">Zero long-term lock-ins.</span>
+        </p>
+      </motion.div>
     </div>
   );
 };
@@ -136,7 +144,7 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
+      className="group/product h-64 md:h-80 lg:h-96 w-[16rem] md:w-[24rem] lg:w-[30rem] relative flex-shrink-0"
     >
       <Link
         href={product.link}

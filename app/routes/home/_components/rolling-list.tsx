@@ -34,7 +34,7 @@ function RollingTextItem({ item }: RollingTextItemProps) {
         <div className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
           {/* State 1: Normal */}
           <div className="h-[60px] md:h-20 flex items-center">
-            <h2 className="text-5xl md:text-7xl font-black text-foreground uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground uppercase tracking-tighter">
               {item.title}
             </h2>
           </div>
@@ -43,7 +43,7 @@ function RollingTextItem({ item }: RollingTextItemProps) {
           <div className="h-[60px] md:h-20 flex items-center">
             <h2
               className={cn(
-                "text-5xl md:text-7xl font-black uppercase tracking-tighter italic",
+                "text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic",
                 colorClassMap[item.color]
               )}
             >
@@ -58,10 +58,10 @@ function RollingTextItem({ item }: RollingTextItemProps) {
         {item.category}
       </span>
 
-      {/* Image Reveal Effect */}
+      {/* Image Reveal Effect - Hidden on mobile, visible on desktop */}
       <div
         className={cn(
-          "pointer-events-none absolute right-0 top-1/2 z-20 h-32 w-48 -translate-y-1/2 overflow-hidden rounded-lg shadow-2xl",
+          "pointer-events-none absolute right-0 top-1/2 z-20 h-32 w-48 -translate-y-1/2 overflow-hidden rounded-lg shadow-2xl hidden md:block",
           "transition-all duration-500 ease-out",
           "opacity-0 scale-95 rotate-3 translate-x-4",
           "group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 group-hover:translate-x-0"
@@ -126,13 +126,39 @@ function RollingTextList() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="mx-auto flex w-full max-w-7xl flex-col items-start justify-center px-6 sm:px-8 lg:px-12 py-32"
     >
-      <div className="mb-16 px-2">
-        <h2 className="text-4xl font-bold md:text-5xl mb-4 text-foreground">
-          Our <span className="text-purple-600">Services</span>
-        </h2>
-        <p className="text-muted-foreground text-xl max-w-2xl leading-relaxed">
+      <div className="mb-20 px-2 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 mb-6"
+        >
+          <span className="text-sm font-semibold text-purple-700">Our Services</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.3 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6"
+        >
+          <span className="block text-gray-900">What we</span>
+          <span className="block text-purple-600">
+            provide
+          </span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.4 }}
+          className="text-gray-600 text-lg md:text-xl leading-relaxed"
+        >
           Comprehensive digital solutions tailored to elevate your business.
-        </p>
+        </motion.p>
       </div>
       <motion.div
         className="w-full flex flex-col px-2"

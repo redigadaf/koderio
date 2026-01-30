@@ -3,36 +3,90 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Code, Smartphone, Palette, MessageSquare, Rocket, Pen, Sparkles, ChevronRight } from "lucide-react";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
     const navLinks = [
-        { title: "Home", href: "/" },
-        { title: "Work", href: "#" },
+        { title: "Home", href: "/routes/home" },
+        { title: "Work", href: "/routes/work" },
         {
             title: "Services",
-            href: "#",
+            href: "/routes/services",
             isDropdown: true,
-            items: [
-                { title: "Web Development", href: "#" },
-                { title: "Mobile Apps", href: "#" },
-                { title: "UI/UX Design", href: "#" },
-                { title: "Consulting", href: "#" },
+            mainServices: [
+                {
+                    title: "Web Development",
+                    href: "/routes/services/web-development",
+                    description: "Build scalable web applications with modern technologies",
+                    icon: Code
+                },
+                {
+                    title: "Mobile Apps",
+                    href: "/routes/services/mobile-apps",
+                    description: "Native and cross-platform mobile solutions",
+                    icon: Smartphone
+                },
+                {
+                    title: "UI/UX Design",
+                    href: "/routes/services/uiux-design",
+                    description: "Beautiful, user-centered design experiences",
+                    icon: Palette
+                },
+            ],
+            additionalServices: [
+                {
+                    title: "Consulting",
+                    href: "/routes/services/consulting",
+                    description: "Strategic guidance for your digital transformation",
+                    icon: MessageSquare
+                },
+                {
+                    title: "MVP Development",
+                    href: "/routes/services/mvp",
+                    description: "Launch your product idea quickly and efficiently",
+                    icon: Rocket
+                },
+                {
+                    title: "Branding",
+                    href: "/routes/services/branding",
+                    description: "Create a memorable brand identity",
+                    icon: Sparkles
+                },
             ]
         },
-        { title: "About Us", href: "#" },
-        { title: "Blog", href: "#" },
+        { title: "About Us", href: "/routes/about" },
+        { title: "Blog", href: "/routes/blog" },
     ];
 
     return (
-        <nav className="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
+        <nav
+            className={`fixed z-50 transition-all duration-300 left-1/2 -translate-x-1/2 ${isScrolled || isOpen
+                ? "top-4 w-[95%] max-w-7xl bg-background/95 backdrop-blur-md border border-primary/20 rounded-2xl shadow-xl"
+                : "top-0 w-full bg-transparent border-transparent shadow-none"
+                }`}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -53,7 +107,7 @@ export const Navbar = () => {
                                         onMouseEnter={() => setServicesOpen(true)}
                                         onMouseLeave={() => setServicesOpen(false)}
                                     >
-                                        <button className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1 focus:outline-none">
+                                        <button className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1 focus:outline-none relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]">
                                             {link.title}
                                             <ChevronDown size={16} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
                                         </button>
@@ -65,18 +119,91 @@ export const Navbar = () => {
                                                     animate={{ opacity: 1, y: 0 }}
                                                     exit={{ opacity: 0, y: 10 }}
                                                     transition={{ duration: 0.2 }}
-                                                    className="absolute left-0 mt-0 w-48 bg-background border border-border shadow-lg rounded-md overflow-hidden z-50"
+                                                    className="absolute left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-background border border-border shadow-2xl rounded-xl overflow-hidden z-50"
                                                 >
-                                                    <div className="py-1">
-                                                        {link.items?.map((item) => (
-                                                            <Link
-                                                                key={item.title}
-                                                                href={item.href}
-                                                                className="block px-4 py-2 text-sm text-foreground hover:bg-purple-50 hover:text-primary transition-colors"
-                                                            >
-                                                                {item.title}
-                                                            </Link>
-                                                        ))}
+                                                    <div className="grid grid-cols-2 gap-6 p-6">
+                                                        {/* Main Services Column */}
+                                                        <div>
+                                                            <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                                                                Main Services
+                                                            </h3>
+                                                            <div className="space-y-2">
+                                                                {link.mainServices?.map((item) => {
+                                                                    const Icon = item.icon;
+                                                                    return (
+                                                                        <Link
+                                                                            key={item.title}
+                                                                            href={item.href}
+                                                                            className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-white dark:hover:bg-slate-900/50 hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-purple-100 dark:hover:border-purple-900/50 relative overflow-hidden bg-transparent"
+                                                                        >
+                                                                            {/* Decorative background gradient opacity */}
+                                                                            <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-indigo-50/50 dark:from-purple-950/20 dark:to-indigo-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                                                            {/* Icon Container */}
+                                                                            <div className="relative flex-shrink-0 w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center group-hover:bg-purple-600 dark:group-hover:bg-purple-500 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:-rotate-3">
+                                                                                <Icon className="w-6 h-6 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300" />
+                                                                            </div>
+
+                                                                            {/* Content */}
+                                                                            <div className="relative flex-1 min-w-0">
+                                                                                <div className="flex items-center justify-between mb-1">
+                                                                                    <h4 className="text-base font-bold text-foreground group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">
+                                                                                        {item.title}
+                                                                                    </h4>
+                                                                                    <ChevronRight className="w-4 h-4 text-purple-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                                                                </div>
+                                                                                <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors line-clamp-2 leading-relaxed">
+                                                                                    {item.description}
+                                                                                </p>
+                                                                            </div>
+                                                                        </Link>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Additional Services Column */}
+                                                        <div className="border-l border-border pl-6">
+                                                            <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                                                                Additional Services
+                                                            </h3>
+                                                            <div className="space-y-2">
+                                                                {link.additionalServices?.map((item) => {
+                                                                    const Icon = item.icon;
+                                                                    return (
+                                                                        <Link
+                                                                            key={item.title}
+                                                                            href={item.href}
+                                                                            className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-white dark:hover:bg-slate-900/50 hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-purple-100 dark:hover:border-purple-900/50 relative overflow-hidden bg-transparent"
+                                                                        >
+                                                                            {/* Decorative background gradient */}
+                                                                            <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-indigo-50/50 dark:from-purple-950/20 dark:to-indigo-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                                                            {/* Icon Container */}
+                                                                            <div className="relative flex-shrink-0 w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center group-hover:bg-purple-600 dark:group-hover:bg-purple-500 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:-rotate-3">
+                                                                                <Icon className="w-6 h-6 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300" />
+                                                                            </div>
+
+                                                                            {/* Content */}
+                                                                            <div className="relative flex-1 min-w-0">
+                                                                                <div className="flex items-center justify-between mb-1">
+                                                                                    <h4 className="text-base font-bold text-foreground group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">
+                                                                                        {item.title}
+                                                                                    </h4>
+                                                                                    <ChevronRight className="w-4 h-4 text-purple-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                                                                </div>
+                                                                                <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors line-clamp-2 leading-relaxed">
+                                                                                    {item.description}
+                                                                                </p>
+                                                                            </div>
+                                                                        </Link>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 pt-4 border-t border-border">
+                                                                Complete your project with expert services tailored to your needs.
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </motion.div>
                                             )}
@@ -86,7 +213,7 @@ export const Navbar = () => {
                                     <Link
                                         key={link.title}
                                         href={link.href}
-                                        className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                                        className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]"
                                     >
                                         {link.title}
                                     </Link>
@@ -150,42 +277,130 @@ export const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-background border-b border-primary/20"
+                        className="md:hidden bg-background/50 backdrop-blur-sm border-t border-primary/10 overflow-hidden"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <div className="px-4 pt-4 pb-6 space-y-2 max-h-[85vh] overflow-y-auto">
                             {navLinks.map((link) => (
                                 link.isDropdown ? (
-                                    <div key={link.title}>
-                                        <div className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium font-bold">
+                                    <div key={link.title} className="space-y-2">
+                                        <button
+                                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                                            className="flex items-center justify-between w-full text-foreground hover:text-primary px-3 py-2 rounded-md text-lg font-medium transition-colors"
+                                        >
                                             {link.title}
-                                        </div>
-                                        <div className="pl-4 space-y-1">
-                                            {link.items?.map((item) => (
-                                                <Link
-                                                    key={item.title}
-                                                    href={item.href}
-                                                    className="text-foreground/80 hover:text-primary block px-3 py-2 rounded-md text-sm font-medium"
-                                                    onClick={() => setIsOpen(false)}
+                                            <ChevronDown
+                                                className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                                            />
+                                        </button>
+                                        <AnimatePresence>
+                                            {mobileServicesOpen && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                    className="overflow-hidden"
                                                 >
-                                                    {item.title}
-                                                </Link>
-                                            ))}
-                                        </div>
+                                                    <div className="pl-2 space-y-3 pb-2">
+                                                        {/* Main Services */}
+                                                        {link.mainServices && (
+                                                            <>
+                                                                <div className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-widest px-3 py-1 mt-2">
+                                                                    Main Services
+                                                                </div>
+                                                                {link.mainServices.map((item, index) => {
+                                                                    const Icon = item.icon;
+                                                                    return (
+                                                                        <motion.div
+                                                                            key={item.title}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: index * 0.05 }}
+                                                                        >
+                                                                            <Link
+                                                                                href={item.href}
+                                                                                className="flex items-center gap-4 p-3 rounded-xl bg-background/50 border border-border/50 active:scale-95 transition-transform duration-100"
+                                                                                onClick={() => setIsOpen(false)}
+                                                                            >
+                                                                                {/* Simple Icon Container */}
+                                                                                <div className="flex-shrink-0 w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
+                                                                                    <Icon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                                                                </div>
+
+                                                                                {/* Text Content */}
+                                                                                <div className="flex-1">
+                                                                                    <span className="block text-foreground font-semibold text-sm">
+                                                                                        {item.title}
+                                                                                    </span>
+                                                                                    <span className="block text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                                                                                        {item.description}
+                                                                                    </span>
+                                                                                </div>
+
+                                                                                <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
+                                                                            </Link>
+                                                                        </motion.div>
+                                                                    );
+                                                                })}
+                                                            </>
+                                                        )}
+                                                        {/* Additional Services */}
+                                                        {link.additionalServices && (
+                                                            <div className="pt-2">
+                                                                <div className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-widest px-3 py-1">
+                                                                    More
+                                                                </div>
+                                                                {link.additionalServices.map((item, index) => {
+                                                                    const Icon = item.icon;
+                                                                    return (
+                                                                        <motion.div
+                                                                            key={item.title}
+                                                                            initial={{ opacity: 0, x: -10 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{ delay: 0.15 + (index * 0.05) }}
+                                                                            className="mt-2"
+                                                                        >
+                                                                            <Link
+                                                                                href={item.href}
+                                                                                className="flex items-center gap-4 p-3 rounded-xl bg-background/50 border border-border/50 active:scale-95 transition-transform duration-100"
+                                                                                onClick={() => setIsOpen(false)}
+                                                                            >
+                                                                                <div className="flex-shrink-0 w-10 h-10 bg-purple-50 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+                                                                                    <Icon className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                                                                                </div>
+                                                                                <div className="flex-1">
+                                                                                    <span className="block text-foreground font-semibold text-sm">
+                                                                                        {item.title}
+                                                                                    </span>
+                                                                                </div>
+                                                                                <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
+                                                                            </Link>
+                                                                        </motion.div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 ) : (
                                     <Link
                                         key={link.title}
                                         href={link.href}
-                                        className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                                        className="block px-3 py-3 rounded-xl text-lg font-medium text-foreground hover:bg-purple-50 dark:hover:bg-purple-900/20 active:bg-purple-100 transition-colors border border-transparent"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         {link.title}
                                     </Link>
                                 )
                             ))}
-                            <Button className="w-full text-left mt-4 bg-purple-600 hover:bg-purple-700 text-white border-none">
-                                Get Started
-                            </Button>
+                            <div className="pt-4">
+                                <Button className="w-full h-12 text-base font-semibold rounded-xl bg-purple-600 hover:bg-purple-700 text-white shadow-lg">
+                                    Get Started
+                                </Button>
+                            </div>
                         </div>
                     </motion.div>
                 )}

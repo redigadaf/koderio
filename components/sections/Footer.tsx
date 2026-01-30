@@ -1,5 +1,8 @@
+"use client"
+
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { SocialLinks } from "@/components/ui/social-links";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -49,19 +52,25 @@ export const Footer = () => {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    Features
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        Features
+                                    </Link>
+                                </motion.div>
                             </li>
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    Integrations
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        Integrations
+                                    </Link>
+                                </motion.div>
                             </li>
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    Pricing
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        Pricing
+                                    </Link>
+                                </motion.div>
                             </li>
                         </ul>
                     </div>
@@ -73,19 +82,25 @@ export const Footer = () => {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    About
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        About
+                                    </Link>
+                                </motion.div>
                             </li>
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    Blog
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        Blog
+                                    </Link>
+                                </motion.div>
                             </li>
                             <li>
-                                <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 text-sm transition-colors">
-                                    Careers
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                    <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full text-sm transition-colors">
+                                        Careers
+                                    </Link>
+                                </motion.div>
                             </li>
                         </ul>
                     </div>
@@ -104,12 +119,16 @@ export const Footer = () => {
                         © {new Date().getFullYear()} Koderio. All rights reserved.
                     </p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <Link href="#" className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
-                            Privacy Policy
-                        </Link>
-                        <Link href="#" className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
-                            Terms of Service
-                        </Link>
+                        <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                            <Link href="#" className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full">
+                                Privacy Policy
+                            </Link>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                            <Link href="#" className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 hover:font-semibold dark:hover:text-purple-400 text-sm transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full">
+                                Terms of Service
+                            </Link>
+                        </motion.div>
                     </div>
                 </div>
             </div>
