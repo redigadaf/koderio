@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
 
 interface ListItem {
   id: number;
@@ -27,10 +28,10 @@ function RollingTextItem({ item }: RollingTextItemProps) {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
       }}
-      className="group relative w-full cursor-pointer border-b border-neutral-200 dark:border-neutral-800 py-6"
+      className="group relative w-full cursor-pointer border-b border-neutral-200 dark:border-neutral-800 py-6 "
     >
       {/* Rolling text */}
-      <div className="relative overflow-hidden h-[60px] md:h-20">
+      <div className="relative overflow-hidden h-[60px] md:h-20 px-8">
         <div className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
           {/* State 1: Normal */}
           <div className="h-[60px] md:h-20 flex items-center">
@@ -54,7 +55,7 @@ function RollingTextItem({ item }: RollingTextItemProps) {
       </div>
 
       {/* Category Label */}
-      <span className="absolute top-8 right-0 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-opacity duration-300 group-hover:opacity-0 hidden md:block">
+      <span className="absolute top-8 right-0 px-12 text-xs font-bold uppercase tracking-widest text-muted-foreground transition-opacity duration-300 group-hover:opacity-0 hidden md:block">
         {item.category}
       </span>
 
@@ -126,15 +127,19 @@ function RollingTextList() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="mx-auto flex w-full max-w-7xl flex-col items-start justify-center px-6 sm:px-8 lg:px-12 py-32"
     >
-      <div className="mb-20 px-2 max-w-3xl">
+      <div className="mb-20 px-10 max-w-3xl">
+
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 mb-6"
+          className="mb-6"
         >
-          <span className="text-sm font-semibold text-purple-700">Our Services</span>
+          <Badge variant="secondary" className="px-4 py-2 bg-purple-100 border border-purple-200 text-purple-700 hover:bg-purple-100 rounded-full text-sm font-semibold">
+            Our Services
+          </Badge>
         </motion.div>
 
         <motion.h2

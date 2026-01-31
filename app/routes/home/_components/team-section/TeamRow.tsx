@@ -32,7 +32,7 @@ export function TeamRow({
             onClick={() => isMobile && setActiveId(isActive ? null : data.id)}
             className={`group relative border-b border-gray-200 transition-colors duration-300 ${isMobile ? 'cursor-pointer' : 'cursor-default'}`}
         >
-            <div className="relative z-10 grid grid-cols-12 items-center py-6 px-4 md:px-8">
+            <div className="relative z-10 grid grid-cols-12 items-center py-6 pl-14 pr-4 md:px-8">
                 {/* Index: 001, 002... */}
                 <div className="col-span-2 hidden md:block">
                     <span className={`font-mono text-sm tracking-widest ${isActive ? 'text-white/70' : 'text-slate-500'}`}>
@@ -41,7 +41,7 @@ export function TeamRow({
                 </div>
 
                 {/* Name */}
-                <div className="col-span-12 md:col-span-5 flex items-center gap-4">
+                <div className="col-span-12 md:col-span-5 flex items-center gap-4 pl-2 md:pl-0">
                     {/* Mobile Index */}
                     <span className={`md:hidden font-mono text-xs ${isActive ? 'text-white/70' : 'text-slate-500'}`}>
                         {String(index + 1).padStart(3, '0')}
@@ -66,7 +66,7 @@ export function TeamRow({
                 </div>
 
                 {/* Role */}
-                <div className="col-span-12 md:col-span-5 mt-2 md:mt-0 flex items-center justify-between md:justify-start">
+                <div className="col-span-12 md:col-span-5 mt-2 md:mt-0 flex items-center justify-between md:justify-start pl-16 md:pl-12">
                     <span className={`text-sm md:text-lg font-medium ${isActive ? 'text-white/90' : 'text-slate-600'}`}>
                         {data.role}
                     </span>
@@ -110,15 +110,16 @@ export function TeamRow({
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden bg-black/20"
+                        className="overflow-hidden"
                     >
-                        <div className="p-4">
-                            <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+                        <div className="py-4 px-4">
+                            <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
                                 <Image
                                     src={data.image}
                                     alt={data.name}
                                     className="h-full w-full object-cover"
                                     fill
+                                    sizes="(max-width: 768px) 90vw, 300px"
                                 />
                             </div>
                         </div>

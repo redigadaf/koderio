@@ -15,7 +15,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <div
             onClick={() => handleMove(position)}
             className={cn(
-                "absolute left-1/2 top-[55%] cursor-pointer border-2 p-8 transition-all duration-500 ease-in-out",
+                "absolute left-1/2 top-[60%] cursor-pointer border-2 p-8 transition-all duration-500 ease-in-out",
                 isCenter
                     ? "z-10 bg-purple-600 text-white border-purple-600"
                     : "z-0 bg-card text-card-foreground border-border hover:border-purple-600/50"

@@ -107,10 +107,12 @@ export const Navbar = () => {
                                         onMouseEnter={() => setServicesOpen(true)}
                                         onMouseLeave={() => setServicesOpen(false)}
                                     >
-                                        <button className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1 focus:outline-none relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]">
-                                            {link.title}
-                                            <ChevronDown size={16} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
-                                        </button>
+                                        <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                                            <button className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1 focus:outline-none relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]">
+                                                {link.title}
+                                                <ChevronDown size={16} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
+                                            </button>
+                                        </motion.div>
 
                                         <AnimatePresence>
                                             {servicesOpen && (
@@ -210,18 +212,25 @@ export const Navbar = () => {
                                         </AnimatePresence>
                                     </div>
                                 ) : (
-                                    <Link
-                                        key={link.title}
-                                        href={link.href}
-                                        className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]"
-                                    >
-                                        {link.title}
-                                    </Link>
+                                    <motion.div key={link.title} whileHover={{ scale: 1.05 }} className="inline-block">
+                                        <Link
+                                            href={link.href}
+                                            className="text-foreground hover:text-primary hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:w-0 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]"
+                                        >
+                                            {link.title}
+                                        </Link>
+                                    </motion.div>
                                 )
                             ))}
-                            <Button className="rounded-full shadow-md hover:shadow-primary/30 bg-purple-600 hover:bg-purple-700 text-white border-none">
-                                Get Started
-                            </Button>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <Button className="relative overflow-hidden rounded-full shadow-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-none px-6 group">
+                                    <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out skew-x-12" />
+                                    <span className="relative flex items-center gap-2">
+                                        Get Started
+                                        <ChevronRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                                    </span>
+                                </Button>
+                            </motion.div>
                         </div>
                     </div>
 
@@ -397,9 +406,15 @@ export const Navbar = () => {
                                 )
                             ))}
                             <div className="pt-4">
-                                <Button className="w-full h-12 text-base font-semibold rounded-xl bg-purple-600 hover:bg-purple-700 text-white shadow-lg">
-                                    Get Started
-                                </Button>
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                    <Button className="relative w-full h-12 text-base font-semibold rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg border-none overflow-hidden group">
+                                        <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out skew-x-12" />
+                                        <span className="relative flex items-center justify-center gap-2">
+                                            Get Started
+                                            <ChevronRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                                        </span>
+                                    </Button>
+                                </motion.div>
                             </div>
                         </div>
                     </motion.div>
