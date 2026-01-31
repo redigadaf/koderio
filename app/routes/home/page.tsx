@@ -1,6 +1,6 @@
-import { HeroParallax } from "@/app/routes/home/_components/hero-parallax";
-import { RollingTextList } from "@/app/routes/home/_components/rolling-list";
-import { BouncyCardsFeatures } from "@/app/routes/home/_components/bounce-card-features";
+import { HeroParallax } from "@/app/routes/home/_components/hero-parallax-section";
+import { RollingTextList } from "@/app/routes/home/_components/rolling-list-section";
+import { BouncyCardsFeatures } from "@/app/routes/home/_components/features-section";
 import KineticTeamHybrid from "@/app/routes/home/_components/team-section";
 import PortfolioFolders from "@/app/routes/home/_components/portfolio-folders";
 import { StaggerTestimonials } from "@/app/routes/home/_components/testimonials";

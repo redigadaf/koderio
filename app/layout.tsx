@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/sections/Navbar";
+import { Navbar } from "@/components/sections/navbar/Navbar";
 import { Footer } from "@/components/sections/Footer";
 
 const geistSans = Geist({
@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Koderio",
-  description: "",
+  description: "Koderio - Digital Solutions",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
