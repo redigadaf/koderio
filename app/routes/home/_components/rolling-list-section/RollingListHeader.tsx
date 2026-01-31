@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const RollingListHeader = () => {
     return (
-        <div className="mb-20 px-10 max-w-3xl">
+        <div className="mb-12 px-10 max-w-3xl">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

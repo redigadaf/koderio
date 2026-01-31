@@ -8,7 +8,7 @@ export function TeamHeader() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-20 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+            className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
         >
             <div>
                 <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl md:text-8xl">

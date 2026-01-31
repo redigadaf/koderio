@@ -26,7 +26,7 @@ export default function KineticTeamHybrid() {
       viewport={{ once: false, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       ref={containerRef}
-      className="relative min-h-screen w-full cursor-default bg-background px-6 py-24 text-foreground md:px-12 transition-colors duration-300"
+      className="relative w-full cursor-default bg-background px-6 py-12 md:py-20 text-foreground md:px-12 transition-colors duration-300"
     >
       {/* Background Ambience */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_70%)]" />

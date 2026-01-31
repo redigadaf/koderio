@@ -18,7 +18,7 @@ export function LetsWorkTogether() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="relative min-h-screen flex items-center justify-center px-6 py-20 md:py-32 overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100/50"
+      className="relative flex items-center justify-center px-6 py-12 md:py-20 overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-100/50"
     >
       {/* Animated background grid */}
       <div className="absolute inset-0 -z-10">

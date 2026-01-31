@@ -11,7 +11,7 @@ function RollingTextList() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mx-auto flex w-full max-w-7xl flex-col items-start justify-center px-6 sm:px-8 lg:px-12 py-32"
+            className="mx-auto flex w-full max-w-7xl flex-col items-start justify-center px-6 sm:px-8 lg:px-12 pt-4 pb-10 md:py-20"
         >
             <RollingListHeader />
             <motion.div
