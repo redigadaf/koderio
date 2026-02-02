@@ -1,0 +1,11 @@
+export { getCategoryTheme } from './theme';
+export type { CategoryTheme } from './theme';
+export { default as ProjectHero } from './ProjectHero';
+export { default as ProjectInfoGrid } from './ProjectInfoGrid';
+export { default as ProjectOverview } from './ProjectOverview';
+export { default as TechnicalSpecs } from './TechnicalSpecs';
+export { default as ProjectChallenge } from './ProjectChallenge';
+export { default as ProjectSolution } from './ProjectSolution';
+export { default as FeatureShowcase } from './FeatureShowcase';
+export { default as ProjectImpact } from './ProjectImpact';
+export { default as ProjectCTA } from './ProjectCTA';
