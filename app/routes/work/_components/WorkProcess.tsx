@@ -77,48 +77,108 @@ export function WorkProcess() {
                     {processes.map((process, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -8 }}
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{
+                                duration: 0.6,
+                                delay: index * 0.15,
+                                ease: [0.25, 0.4, 0.25, 1]
+                            }}
+                            whileHover={{ y: -12, scale: 1.02 }}
                             className="group relative"
                         >
                             {/* Card */}
-                            <div className="relative p-8 rounded-3xl bg-background border-2 border-border hover:border-purple-500/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 h-full">
+                            <motion.div
+                                className="relative p-8 rounded-3xl bg-background border-2 border-border transition-all duration-300 shadow-lg h-full"
+                                whileHover={{
+                                    borderColor: "rgba(147, 51, 234, 0.5)",
+                                    boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.25)"
+                                }}
+                            >
                                 {/* Number Badge */}
-                                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                                <motion.div
+                                    className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg"
+                                    whileHover={{ scale: 1.2, rotate: 360 }}
+                                    transition={{ duration: 0.5 }}
+                                >
                                     {process.number}
-                                </div>
+                                </motion.div>
 
                                 {/* Icon */}
-                                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${process.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                                    <process.icon className="w-6 h-6 text-white" />
-                                </div>
+                                <motion.div
+                                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${process.color} mb-6 relative`}
+                                    whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <process.icon className="w-6 h-6 text-white relative z-10" />
+
+                                    {/* Pulse effect */}
+                                    <motion.div
+                                        className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${process.color}`}
+                                        animate={{
+                                            scale: [1, 1.2, 1],
+                                            opacity: [0.5, 0, 0.5]
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            ease: "easeInOut"
+                                        }}
+                                    />
+                                </motion.div>
 
                                 {/* Content */}
-                                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-purple-600 transition-colors">
+                                <motion.h3
+                                    className="text-xl font-bold text-foreground mb-3 transition-colors"
+                                    whileHover={{ color: "rgb(147, 51, 234)" }}
+                                >
                                     {process.title}
-                                </h3>
-                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                </motion.h3>
+                                <motion.p
+                                    className="text-muted-foreground text-sm leading-relaxed"
+                                    initial={{ opacity: 0.7 }}
+                                    whileHover={{ opacity: 1 }}
+                                >
                                     {process.description}
-                                </p>
+                                </motion.p>
 
                                 {/* Connecting Line (except last item) */}
                                 {index < processes.length - 1 && (
-                                    <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-purple-500/50 to-transparent" />
+                                    <motion.div
+                                        className="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-purple-500/50 to-transparent overflow-hidden"
+                                        initial={{ scaleX: 0 }}
+                                        whileInView={{ scaleX: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
+                                        style={{ transformOrigin: "left" }}
+                                    >
+                                        {/* Animated dot */}
+                                        <motion.div
+                                            className="absolute top-0 left-0 w-1 h-full bg-purple-500"
+                                            animate={{
+                                                x: [0, 32, 0]
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                ease: "easeInOut",
+                                                delay: index * 0.5
+                                            }}
+                                        />
+                                    </motion.div>
                                 )}
-                            </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
 
                 {/* Stats Section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
                     className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-purple-600 to-indigo-600 overflow-hidden"
                 >
                     {/* Background Pattern */}
@@ -129,25 +189,76 @@ export function WorkProcess() {
                         }}></div>
                     </div>
 
+                    {/* Animated floating elements */}
+                    <motion.div
+                        className="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full blur-xl"
+                        animate={{
+                            y: [0, -20, 0],
+                            x: [0, 10, 0],
+                            scale: [1, 1.1, 1]
+                        }}
+                        transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                    <motion.div
+                        className="absolute bottom-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"
+                        animate={{
+                            y: [0, 20, 0],
+                            x: [0, -10, 0],
+                            scale: [1, 1.2, 1]
+                        }}
+                        transition={{
+                            duration: 7,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+
                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{
+                                    duration: 0.6,
+                                    delay: index * 0.15,
+                                    type: "spring",
+                                    bounce: 0.4
+                                }}
+                                whileHover={{ scale: 1.1, y: -5 }}
                                 className="text-center"
                             >
-                                <div className="inline-flex p-3 rounded-2xl bg-white/10 backdrop-blur-sm mb-4">
+                                <motion.div
+                                    className="inline-flex p-3 rounded-2xl bg-white/10 backdrop-blur-sm mb-4"
+                                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.2 }}
+                                    transition={{ duration: 0.5 }}
+                                >
                                     <stat.icon className="w-6 h-6 text-white" />
-                                </div>
-                                <div className="text-4xl md:text-5xl font-black text-white mb-2">
+                                </motion.div>
+
+                                <motion.div
+                                    className="text-4xl md:text-5xl font-black text-white mb-2"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                >
                                     {stat.value}
-                                </div>
-                                <div className="text-white/90 font-medium text-sm md:text-base uppercase tracking-wider">
+                                </motion.div>
+
+                                <motion.div
+                                    className="text-white/90 font-medium text-sm md:text-base uppercase tracking-wider"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                >
                                     {stat.label}
-                                </div>
+                                </motion.div>
                             </motion.div>
                         ))}
                     </div>
@@ -155,19 +266,67 @@ export function WorkProcess() {
 
                 {/* CTA */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                     className="text-center mt-16"
                 >
-                    <p className="text-muted-foreground mb-6 text-lg">
+                    <motion.p
+                        className="text-muted-foreground mb-6 text-lg"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
                         Ready to start your project?
-                    </p>
-                    <button className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
-                        Let's Work Together
-                        <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </motion.p>
+
+                    <motion.button
+                        className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        {/* Animated background */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600"
+                            initial={{ x: "-100%" }}
+                            whileHover={{ x: 0 }}
+                            transition={{ duration: 0.3 }}
+                        />
+
+                        {/* Shine effect */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                            animate={{
+                                x: ["-200%", "200%"]
+                            }}
+                            transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }}
+                        />
+
+                        <span className="relative z-10">Let's Work Together</span>
+                        <motion.div
+                            animate={{
+                                x: [0, 5, 0]
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="relative z-10"
+                        >
+                            <Rocket className="w-5 h-5" />
+                        </motion.div>
+                    </motion.button>
                 </motion.div>
             </div>
         </section>

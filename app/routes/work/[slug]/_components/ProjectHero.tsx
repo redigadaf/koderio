@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { CategoryTheme } from './theme';
+import { useRef } from 'react';
 
 interface ProjectHeroProps {
     project: {
@@ -16,33 +17,49 @@ interface ProjectHeroProps {
 }
 
 export default function ProjectHero({ project, theme }: ProjectHeroProps) {
+    const ref = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+
     return (
-        <section className="relative w-full h-[550px] overflow-hidden">
-            {/* Background Image with Overlay */}
+        <section ref={ref} className="relative w-full h-[550px] overflow-hidden">
+            {/* Background Image with Parallax */}
             <motion.div
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+                style={{ y, scale }}
                 className="absolute inset-0"
             >
-                <img
+                <motion.img
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, ease: [0.25, 0.4, 0.25, 1] }}
                     src={project.imageUrl}
                     alt={project.title}
                     className="w-full h-full object-cover"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-br ${theme.primary} opacity-80 mix-blend-multiply`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent"
+                    style={{ opacity }}
+                />
             </motion.div>
 
             {/* Animated Gradient Orbs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div
                     animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.6, 0.3],
+                        x: [0, 50, 0],
+                        y: [0, -30, 0]
                     }}
                     transition={{
-                        duration: 8,
+                        duration: 10,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
@@ -51,10 +68,12 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                 <motion.div
                     animate={{
                         scale: [1.2, 1, 1.2],
-                        opacity: [0.2, 0.4, 0.2],
+                        opacity: [0.2, 0.5, 0.2],
+                        x: [0, -50, 0],
+                        y: [0, 30, 0]
                     }}
                     transition={{
-                        duration: 10,
+                        duration: 12,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
@@ -62,38 +81,75 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                 />
             </div>
 
+            {/* Floating Particles */}
+            {[...Array(8)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-white/30 rounded-full"
+                    initial={{
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * 550,
+                    }}
+                    animate={{
+                        y: [null, -100, 550],
+                        opacity: [0, 1, 0]
+                    }}
+                    transition={{
+                        duration: 3 + Math.random() * 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2,
+                        ease: "linear"
+                    }}
+                />
+            ))}
+
             {/* Content */}
-            <div className="relative h-full flex flex-col justify-between p-6 md:p-12">
+            <motion.div
+                className="relative h-full flex flex-col justify-between p-6 md:p-12"
+                style={{ opacity }}
+            >
                 {/* Top section with Back to Work button */}
                 <div className="max-w-6xl mx-auto w-full">
-                    <Link
-                        href="/routes/work"
-                        className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-all group backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full"
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-sm font-semibold">Back to Work</span>
-                    </Link>
+                        <Link
+                            href="/routes/work"
+                            className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-all group backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full hover:bg-white/20"
+                        >
+                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                            <span className="text-sm font-semibold">Back to Work</span>
+                        </Link>
+                    </motion.div>
                 </div>
 
                 {/* Bottom section with main content */}
                 <div className="max-w-6xl mx-auto w-full pb-12">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
                         className="space-y-6"
                     >
                         <motion.span
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
+                            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.4,
+                                type: "spring",
+                                bounce: 0.5
+                            }}
+                            whileHover={{ scale: 1.05 }}
                             className={`inline-block px-4 py-2 ${theme.accent} text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg ${theme.glow}`}
                         >
                             {project.category}
                         </motion.span>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
                             className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tighter leading-none"
@@ -102,13 +158,27 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                                 fontFamily: 'system-ui, -apple-system, sans-serif'
                             }}
                         >
-                            {project.title}
+                            {project.title.split(' ').map((word, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: 0.6 + index * 0.1,
+                                        ease: [0.25, 0.4, 0.25, 1]
+                                    }}
+                                    className="inline-block mr-4"
+                                >
+                                    {word}
+                                </motion.span>
+                            ))}
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
                             className="text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed font-light"
                             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}
                         >
@@ -116,7 +186,7 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                         </motion.p>
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

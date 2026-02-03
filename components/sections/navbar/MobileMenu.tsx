@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ interface MobileMenuProps {
 
 export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <AnimatePresence>
@@ -30,7 +32,10 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                 <div key={link.title} className="space-y-2">
                                     <button
                                         onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                                        className="flex items-center justify-between w-full text-foreground hover:text-primary px-3 py-2 rounded-md text-lg font-medium transition-colors"
+                                        className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-lg font-medium transition-colors ${pathname?.startsWith('/routes/services')
+                                            ? 'text-purple-600 dark:text-purple-400 font-bold'
+                                            : 'text-foreground hover:text-primary'
+                                            }`}
                                     >
                                         {link.title}
                                         <ChevronDown
@@ -64,17 +69,29 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                                     >
                                                                         <Link
                                                                             href={item.href}
-                                                                            className="flex items-center gap-4 p-3 rounded-xl bg-background/50 border border-border/50 active:scale-95 transition-transform duration-100"
+                                                                            className={`flex items-center gap-4 p-3 rounded-xl border active:scale-95 transition-all duration-100 ${pathname === item.href
+                                                                                ? 'bg-purple-50 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700'
+                                                                                : 'bg-background/50 border-border/50'
+                                                                                }`}
                                                                             onClick={onClose}
                                                                         >
                                                                             {/* Simple Icon Container */}
-                                                                            <div className="flex-shrink-0 w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-                                                                                <Icon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                                                            <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${pathname === item.href
+                                                                                ? 'bg-purple-600 dark:bg-purple-500'
+                                                                                : 'bg-purple-100 dark:bg-purple-900/50'
+                                                                                }`}>
+                                                                                <Icon className={`w-5 h-5 ${pathname === item.href
+                                                                                    ? 'text-white'
+                                                                                    : 'text-purple-600 dark:text-purple-400'
+                                                                                    }`} />
                                                                             </div>
 
                                                                             {/* Text Content */}
                                                                             <div className="flex-1">
-                                                                                <span className="block text-foreground font-semibold text-sm">
+                                                                                <span className={`block font-semibold text-sm ${pathname === item.href
+                                                                                    ? 'text-purple-700 dark:text-purple-300'
+                                                                                    : 'text-foreground'
+                                                                                    }`}>
                                                                                     {item.title}
                                                                                 </span>
                                                                                 <span className="block text-xs text-muted-foreground line-clamp-1 mt-0.5">
@@ -107,14 +124,26 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                                     >
                                                                         <Link
                                                                             href={item.href}
-                                                                            className="flex items-center gap-4 p-3 rounded-xl bg-background/50 border border-border/50 active:scale-95 transition-transform duration-100"
+                                                                            className={`flex items-center gap-4 p-3 rounded-xl border active:scale-95 transition-all duration-100 ${pathname === item.href
+                                                                                    ? 'bg-purple-50 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700'
+                                                                                    : 'bg-background/50 border-border/50'
+                                                                                }`}
                                                                             onClick={onClose}
                                                                         >
-                                                                            <div className="flex-shrink-0 w-10 h-10 bg-purple-50 dark:bg-slate-800 rounded-lg flex items-center justify-center">
-                                                                                <Icon className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                                                                            <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${pathname === item.href
+                                                                                    ? 'bg-purple-600 dark:bg-purple-500'
+                                                                                    : 'bg-purple-50 dark:bg-slate-800'
+                                                                                }`}>
+                                                                                <Icon className={`w-5 h-5 ${pathname === item.href
+                                                                                        ? 'text-white'
+                                                                                        : 'text-purple-500 dark:text-purple-400'
+                                                                                    }`} />
                                                                             </div>
                                                                             <div className="flex-1">
-                                                                                <span className="block text-foreground font-semibold text-sm">
+                                                                                <span className={`block font-semibold text-sm ${pathname === item.href
+                                                                                        ? 'text-purple-700 dark:text-purple-300'
+                                                                                        : 'text-foreground'
+                                                                                    }`}>
                                                                                     {item.title}
                                                                                 </span>
                                                                             </div>
@@ -134,7 +163,10 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                 <Link
                                     key={link.title}
                                     href={link.href}
-                                    className="block px-3 py-3 rounded-xl text-lg font-medium text-foreground hover:bg-purple-50 dark:hover:bg-purple-900/20 active:bg-purple-100 transition-colors border border-transparent"
+                                    className={`block px-3 py-3 rounded-xl text-lg font-medium transition-colors border ${pathname === link.href
+                                        ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800'
+                                        : 'text-foreground hover:bg-purple-50 dark:hover:bg-purple-900/20 active:bg-purple-100 border-transparent'
+                                        }`}
                                     onClick={onClose}
                                 >
                                     {link.title}

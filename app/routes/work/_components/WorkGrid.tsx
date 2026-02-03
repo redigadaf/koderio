@@ -22,44 +22,75 @@ export function WorkGrid() {
     return (
         <section className="container px-4 md:px-6 lg:px-8 mx-auto pb-20 pt-5 max-w-[1400px]">
             {/* Filter Bar */}
-            {/* Filter Bar */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12 relative z-30">
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+                className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12 relative z-30"
+            >
                 {/* Search Input */}
-                <div className="relative w-full md:max-w-md lg:max-w-lg group">
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="relative w-full md:max-w-md lg:max-w-lg group"
+                >
                     <div className="relative">
-                        <input
+                        <motion.input
                             type="text"
                             placeholder="Find your inspiration..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full pl-12 pr-6 py-3.5 rounded-full border border-purple-500/20 bg-purple-500/5 shadow-sm focus:outline-none focus:border-purple-500/40 transition-all placeholder:text-muted-foreground/50 text-foreground"
+                            whileFocus={{ scale: 1.02, borderColor: "rgba(147, 51, 234, 0.5)" }}
+                            transition={{ duration: 0.2 }}
                         />
-                        <div className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-purple-500/10 rounded-full text-purple-600 pointer-events-none z-10 transition-colors">
+                        <motion.div
+                            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-purple-500/10 rounded-full text-purple-600 pointer-events-none z-10 transition-colors"
+                            animate={{
+                                scale: searchQuery ? [1, 1.2, 1] : 1
+                            }}
+                            transition={{ duration: 0.3 }}
+                        >
                             <Search className="w-4 h-4" />
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Category Dropdown with Pills */}
-                <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto">
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex items-center gap-2 md:gap-4 w-full md:w-auto"
+                >
                     <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground hidden lg:block">Category</span>
                     <div
                         className="relative"
                         onMouseEnter={() => setIsDropdownOpen(true)}
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                        <button
+                        <motion.button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             className="group flex items-center gap-3 px-4 md:px-6 py-3 md:py-3.5 rounded-full border border-purple-500/20 bg-purple-500/5 shadow-sm hover:border-purple-500/50 hover:shadow-md hover:shadow-purple-500/5 transition-all w-full md:w-auto md:min-w-[200px] justify-between relative overflow-hidden"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                         >
                             <span className="text-sm font-medium group-hover:text-purple-600 transition-colors z-10">{activeCategory}</span>
-                            <svg className={`w-4 h-4 text-muted-foreground group-hover:text-purple-600 transition-all duration-300 z-10 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <motion.svg
+                                className="w-4 h-4 text-muted-foreground group-hover:text-purple-600 transition-all duration-300 z-10"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
+                            </motion.svg>
 
                             {/* Hover Highlight */}
                             <div className="absolute inset-0 bg-purple-500/0 group-hover:bg-purple-500/5 transition-colors duration-300" />
-                        </button>
+                        </motion.button>
 
                         <AnimatePresence>
                             {isDropdownOpen && (
@@ -79,9 +110,12 @@ export function WorkGrid() {
 
                                         {/* Pills inside dropdown */}
                                         <div className="flex flex-wrap gap-2">
-                                            {CATEGORIES.map((category) => (
-                                                <button
+                                            {CATEGORIES.map((category, idx) => (
+                                                <motion.button
                                                     key={category}
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    transition={{ delay: idx * 0.05 }}
                                                     onClick={() => {
                                                         setActiveCategory(category);
                                                         setIsDropdownOpen(false);
@@ -93,6 +127,8 @@ export function WorkGrid() {
                                                             : 'bg-muted/50 text-muted-foreground hover:bg-purple-500/10 hover:text-purple-600 border border-border hover:border-purple-500/30'
                                                         }
                                                     `}
+                                                    whileHover={{ scale: 1.05 }}
+                                                    whileTap={{ scale: 0.95 }}
                                                 >
                                                     <span className="relative z-10">{category}</span>
 
@@ -104,7 +140,7 @@ export function WorkGrid() {
                                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                                         />
                                                     )}
-                                                </button>
+                                                </motion.button>
                                             ))}
                                         </div>
                                     </motion.div>
@@ -112,8 +148,8 @@ export function WorkGrid() {
                             )}
                         </AnimatePresence>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* Grid */}
             <motion.div
