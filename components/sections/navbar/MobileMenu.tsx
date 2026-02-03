@@ -122,33 +122,18 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                                         transition={{ delay: 0.15 + (index * 0.05) }}
                                                                         className="mt-2"
                                                                     >
-                                                                        <Link
-                                                                            href={item.href}
-                                                                            className={`flex items-center gap-4 p-3 rounded-xl border active:scale-95 transition-all duration-100 ${pathname === item.href
-                                                                                    ? 'bg-purple-50 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700'
-                                                                                    : 'bg-background/50 border-border/50'
-                                                                                }`}
-                                                                            onClick={onClose}
+                                                                        <div
+                                                                            className="flex items-center gap-4 p-3 rounded-xl border bg-background/50 border-border/50"
                                                                         >
-                                                                            <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${pathname === item.href
-                                                                                    ? 'bg-purple-600 dark:bg-purple-500'
-                                                                                    : 'bg-purple-50 dark:bg-slate-800'
-                                                                                }`}>
-                                                                                <Icon className={`w-5 h-5 ${pathname === item.href
-                                                                                        ? 'text-white'
-                                                                                        : 'text-purple-500 dark:text-purple-400'
-                                                                                    }`} />
+                                                                            <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-purple-50 dark:bg-slate-800">
+                                                                                <Icon className="w-5 h-5 text-purple-500 dark:text-purple-400" />
                                                                             </div>
                                                                             <div className="flex-1">
-                                                                                <span className={`block font-semibold text-sm ${pathname === item.href
-                                                                                        ? 'text-purple-700 dark:text-purple-300'
-                                                                                        : 'text-foreground'
-                                                                                    }`}>
+                                                                                <span className="block font-semibold text-sm text-foreground">
                                                                                     {item.title}
                                                                                 </span>
                                                                             </div>
-                                                                            <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
-                                                                        </Link>
+                                                                        </div>
                                                                     </motion.div>
                                                                 );
                                                             })}

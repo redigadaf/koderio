@@ -107,53 +107,26 @@ export const DesktopMenu = () => {
                                                 <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
                                                     Additional Services
                                                 </h3>
-                                                <div className="space-y-2">
+                                                <div className="space-y-1.5">
                                                     {link.additionalServices?.map((item) => {
                                                         const Icon = item.icon;
-                                                        const isActive = pathname === item.href;
                                                         return (
-                                                            <Link
+                                                            <div
                                                                 key={item.title}
-                                                                href={item.href}
-                                                                className={`group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 border relative overflow-hidden ${isActive
-                                                                        ? 'bg-purple-50 dark:bg-purple-900/30 border-purple-200 dark:border-purple-700 shadow-lg'
-                                                                        : 'bg-transparent border-transparent hover:bg-white dark:hover:bg-slate-900/50 hover:shadow-xl hover:-translate-y-1 hover:border-purple-100 dark:hover:border-purple-900/50'
-                                                                    }`}
+                                                                className="group flex items-center gap-3 p-2.5 rounded-lg transition-all duration-300 relative overflow-hidden"
                                                             >
-                                                                {/* Decorative background gradient */}
-                                                                <div className={`absolute inset-0 bg-gradient-to-br from-purple-50/50 to-indigo-50/50 dark:from-purple-950/20 dark:to-indigo-950/20 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                                                                    }`} />
-
                                                                 {/* Icon Container */}
-                                                                <div className={`relative flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive
-                                                                        ? 'bg-purple-600 dark:bg-purple-500 shadow-lg scale-110 -rotate-3'
-                                                                        : 'bg-purple-100 dark:bg-purple-900/30 group-hover:bg-purple-600 dark:group-hover:bg-purple-500 group-hover:shadow-lg group-hover:scale-110 group-hover:-rotate-3'
-                                                                    }`}>
-                                                                    <Icon className={`w-6 h-6 transition-colors duration-300 ${isActive
-                                                                            ? 'text-white'
-                                                                            : 'text-purple-600 dark:text-purple-400 group-hover:text-white'
-                                                                        }`} />
+                                                                <div className="relative flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 bg-purple-100 dark:bg-purple-900/30">
+                                                                    <Icon className="w-5 h-5 transition-colors duration-300 text-purple-600 dark:text-purple-400" />
                                                                 </div>
 
                                                                 {/* Content */}
                                                                 <div className="relative flex-1 min-w-0">
-                                                                    <div className="flex items-center justify-between mb-1">
-                                                                        <h4 className={`text-base font-bold transition-colors ${isActive
-                                                                                ? 'text-purple-700 dark:text-purple-300'
-                                                                                : 'text-foreground group-hover:text-purple-700 dark:group-hover:text-purple-300'
-                                                                            }`}>
-                                                                            {item.title}
-                                                                        </h4>
-                                                                        <ChevronRight className={`w-4 h-4 text-purple-500 transition-all duration-300 ${isActive
-                                                                                ? 'opacity-100 translate-x-0'
-                                                                                : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
-                                                                            }`} />
-                                                                    </div>
-                                                                    <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors line-clamp-2 leading-relaxed">
-                                                                        {item.description}
-                                                                    </p>
+                                                                    <h4 className="text-sm font-semibold transition-colors text-foreground">
+                                                                        {item.title}
+                                                                    </h4>
                                                                 </div>
-                                                            </Link>
+                                                            </div>
                                                         );
                                                     })}
                                                 </div>
