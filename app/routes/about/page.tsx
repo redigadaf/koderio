@@ -1,14 +1,23 @@
+import AboutHero from './_components/AboutHero';
+import VisionMission from './_components/VisionMission';
+import ServicesSection from './_components/ServicesSection';
+import { RecognitionSection } from './_components/RecognitionSection';
+import Milestones from './_components/Milestones';
+import TeamGrid from './_components/TeamGrid';
+import SocialImpact from './_components/SocialImpact';
+import CultureGallery from './_components/CultureGallery';
+
 export default function AboutPage() {
     return (
-        <div className="min-h-screen flex items-center justify-center px-4">
-            <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                    About <span className="text-purple-600">Us</span>
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                    Learn more about our team, mission, and values.
-                </p>
-            </div>
-        </div>
+        <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+            <AboutHero />
+            <VisionMission />
+            <ServicesSection />
+            <RecognitionSection />
+            <Milestones />
+            <TeamGrid />
+            <SocialImpact />
+            <CultureGallery />
+        </main>
     );
 }
