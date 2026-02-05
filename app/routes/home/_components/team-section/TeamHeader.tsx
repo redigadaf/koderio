@@ -12,7 +12,7 @@ export function TeamHeader() {
         >
             <div>
                 <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl md:text-8xl">
-                    Meet Our <span className="text-purple-600">Devs</span>
+                    Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">Devs</span>
                 </h1>
             </div>
             <div className="h-px flex-1 bg-border mx-8 hidden md:block" />

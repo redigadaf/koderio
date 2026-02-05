@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { aboutData } from '../_data/aboutData';
 import { Heart, Globe, Users, ArrowRight, Sparkles } from 'lucide-react';
-import { fadeInUp, staggerContainer } from './animations';
+import { fadeInUp, staggerContainer, scrollViewport } from './animations';
 
 const icons = [Heart, Users, Globe];
 
@@ -17,7 +17,7 @@ export default function SocialImpact() {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     variants={fadeInUp}
                     className="text-center mb-16"
                 >
@@ -27,7 +27,7 @@ export default function SocialImpact() {
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-slate-900">
-                        Social <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Impact</span>
+                        Social <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">Impact</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                         We believe in using our success to create positive change in the world around us.
@@ -38,7 +38,7 @@ export default function SocialImpact() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     className="grid md:grid-cols-3 gap-8"
                 >
                     {aboutData.socialImpact.map((item, index) => {

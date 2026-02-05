@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { aboutData } from '../_data/aboutData';
-import { fadeInUp, staggerContainer } from './animations';
+import { fadeInUp, staggerContainer, scrollViewport } from './animations';
 
 export default function AboutHero() {
     // Word animation setup
@@ -35,7 +35,8 @@ export default function AboutHero() {
                 <motion.div
                     variants={staggerContainer}
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={scrollViewport}
                     className="grid lg:grid-cols-2 gap-16 items-center mb-24"
                 >
                     {/* Left Content */}
@@ -57,7 +58,8 @@ export default function AboutHero() {
                                 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight flex flex-wrap gap-x-4"
                                 variants={staggerContainer}
                                 initial="hidden"
-                                animate="visible"
+                                whileInView="visible"
+                                viewport={scrollViewport}
                             >
                                 {titleWords.map((word, i) => (
                                     <motion.span
@@ -71,7 +73,7 @@ export default function AboutHero() {
                                                 transition: { type: "spring", stiffness: 100, damping: 20 }
                                             }
                                         }}
-                                        className={word === "digital" || word === "experiences" ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600" : ""}
+                                        className={word === "digital" || word === "experiences" ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600" : ""}
                                     >
                                         {word}
                                     </motion.span>
@@ -162,7 +164,7 @@ export default function AboutHero() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     className="grid grid-cols-1 md:grid-cols-3 gap-8"
                 >
                     {aboutData.hero.stats.map((stat, index) => (

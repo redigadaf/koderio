@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Compass, Target, Sparkles, ArrowRight } from 'lucide-react';
 import { aboutData } from '../_data/aboutData';
-import { fadeInUp, slideInLeft, slideInRight, auroraBackground } from './animations';
+import { fadeInUp, slideInLeft, slideInRight, auroraBackground, scrollViewport } from './animations';
 
 export default function VisionMission() {
     return (
@@ -13,7 +13,7 @@ export default function VisionMission() {
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     className="relative rounded-[3rem] overflow-hidden bg-[#130725] text-white p-8 md:p-16 shadow-2xl group/main"
                 >
                     {/* Animated Aurora Background - Faster & More Vivid */}
@@ -33,7 +33,7 @@ export default function VisionMission() {
                                 variants={slideInLeft}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true }}
+                                viewport={scrollViewport}
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.1, rotate: -2 }}
@@ -45,7 +45,7 @@ export default function VisionMission() {
                                 </motion.div>
 
                                 <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tight drop-shadow-lg">
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-purple-400">
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-pink-600">
                                         {aboutData.visionMission.title}
                                     </span>
                                 </h2>
@@ -62,7 +62,7 @@ export default function VisionMission() {
                                 variants={slideInRight}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true }}
+                                viewport={scrollViewport}
                                 whileHover={{
                                     scale: 1.05,
                                     rotateY: -5,
@@ -104,7 +104,7 @@ export default function VisionMission() {
                                 variants={slideInRight}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true }}
+                                viewport={scrollViewport}
                                 whileHover={{
                                     scale: 1.05,
                                     rotateY: -5,

@@ -101,7 +101,7 @@ export function WorkHeader() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8, delay: 0.6, type: "spring", bounce: 0.4 }}
-                                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600"
+                                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600"
                             >
                                 Digital
                             </motion.span>

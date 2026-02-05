@@ -80,3 +80,10 @@ export const auroraBackground: Variants = {
         }
     }
 };
+
+// Reusable viewport configuration for consistency
+export const scrollViewport = {
+    once: false,
+    amount: 0.2, // Trigger when 20% of element is visible
+    margin: "0px"
+};

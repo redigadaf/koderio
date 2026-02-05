@@ -12,7 +12,7 @@ export const Header = () => {
             >
                 <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.9]">
                     <span className="block text-gray-900 dark:text-white">We Power SaaS</span>
-                    <span className="block text-purple-600 dark:text-purple-500" style={{ color: '#9333ea' }}>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                         with Design
                     </span>
                 </h1>

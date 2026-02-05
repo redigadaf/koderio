@@ -34,7 +34,7 @@ export default function Milestones() {
                     className="text-4xl md:text-5xl font-bold mb-24 text-center leading-tight"
                 >
                     Our Journey <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 text-3xl md:text-4xl">Through the years</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600 text-3xl md:text-4xl">Through the years</span>
                 </motion.h2>
 
                 <div className="relative">

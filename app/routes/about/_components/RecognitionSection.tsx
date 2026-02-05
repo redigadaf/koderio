@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Trophy, ExternalLink, Star, Award } from 'lucide-react';
-import { fadeInUp, staggerContainer, slideInRight } from './animations';
+import { fadeInUp, staggerContainer, slideInRight, scrollViewport } from './animations';
 
 import { aboutData } from '../_data/aboutData';
 
@@ -18,7 +18,7 @@ export const RecognitionSection = () => {
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={scrollViewport}
                     className="relative rounded-[3rem] bg-[#0F0518] border border-white/10 p-8 md:p-12 lg:p-16 overflow-hidden shadow-2xl text-white isolation-auto"
                 >
                     {/* Noise Texture & Gradients */}
@@ -37,7 +37,7 @@ export const RecognitionSection = () => {
 
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-[0.9]">
                                     Global<br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Recognition</span>
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">Recognition</span>
                                 </h2>
                                 <p className="text-lg text-white/50 mb-10 max-w-sm leading-relaxed font-light">
                                     Our work has been featured and awarded by the most prestigious design communities on the web.
@@ -61,7 +61,7 @@ export const RecognitionSection = () => {
                             variants={staggerContainer}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={scrollViewport}
                         >
                             {aboutData.awards.map((award: any, i: number) => (
                                 <motion.div

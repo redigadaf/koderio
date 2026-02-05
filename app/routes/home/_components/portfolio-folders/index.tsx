@@ -22,7 +22,7 @@ export default function PortfolioFolders() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl font-black tracking-tighter text-foreground sm:text-6xl md:text-8xl mb-4">
-            Design <span className="text-purple-600">Portfolio</span>
+            Design <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">Portfolio</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             An interactive catalog of creative work. Hover over folders to reveal project previews.

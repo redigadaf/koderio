@@ -78,7 +78,7 @@ export function LetsWorkTogether() {
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight"
             >
               <span className="block text-gray-900">Ready to start</span>
-              <span className="block text-purple-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                 your project?
               </span>
             </motion.h2>

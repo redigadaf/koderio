@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { aboutData } from '../_data/aboutData';
 import { ArrowUpRight, Linkedin, Twitter, Sparkles } from 'lucide-react';
-import { fadeInUp, staggerContainer } from './animations';
+import { fadeInUp, staggerContainer, scrollViewport } from './animations';
 
 export default function TeamGrid() {
     return (
@@ -16,7 +16,7 @@ export default function TeamGrid() {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     variants={fadeInUp}
                     className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
                 >
@@ -26,7 +26,7 @@ export default function TeamGrid() {
                             <span className="text-purple-600 font-bold tracking-wider uppercase text-sm">Our Experts</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-slate-900">
-                            Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Minds</span>
+                            Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">Minds</span>
                         </h2>
                         <p className="text-lg text-slate-600 max-w-xl leading-relaxed">
                             A collective of visionaries, creators, and strategists united by a passion for digital excellence.
@@ -49,7 +49,7 @@ export default function TeamGrid() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={scrollViewport}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
                 >
                     {aboutData.team.map((member, index) => (

@@ -23,7 +23,7 @@ export const FeaturesHeader = () => {
                 className="max-w-3xl text-4xl md:text-6xl lg:text-7xl font-black tracking-tight"
             >
                 <span className="block text-gray-900">Everything you need</span>
-                <span className="block text-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                     to succeed
                 </span>
             </motion.h2>

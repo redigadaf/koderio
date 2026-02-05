@@ -3,6 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import { aboutData } from '../_data/aboutData';
 import { ServiceCard } from './ServiceCard';
+import { scrollViewport } from './animations';
 import { Sparkles } from 'lucide-react';
 
 const containerVariants: Variants = {
@@ -30,7 +31,7 @@ export default function ServicesSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={scrollViewport}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8"
                 >
@@ -38,7 +39,7 @@ export default function ServicesSection() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
+                            viewport={scrollViewport}
                             transition={{ duration: 0.4 }}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-purple-600 font-bold text-xs mb-6"
                         >
@@ -48,7 +49,7 @@ export default function ServicesSection() {
 
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 mb-0">
                             Crafting Digital{" "}
-                            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+                            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                                 Masterpieces
                             </span>
                         </h2>
@@ -57,7 +58,7 @@ export default function ServicesSection() {
                         className="text-lg text-slate-500 max-w-sm leading-relaxed border-l-4 border-purple-400 pl-6 py-2"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={scrollViewport}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         We blend aesthetic beauty with technical precision to create digital experiences that define the future.
@@ -70,7 +71,7 @@ export default function ServicesSection() {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
+                    viewport={scrollViewport}
                 >
                     {aboutData.services.map((service, index) => (
                         <ServiceCard key={index} service={service} index={index} />

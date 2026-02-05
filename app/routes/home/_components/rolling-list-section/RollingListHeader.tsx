@@ -25,7 +25,7 @@ export const RollingListHeader = () => {
                 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6"
             >
                 <span className="block text-gray-900">What we</span>
-                <span className="block text-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                     provide
                 </span>
             </motion.h2>
