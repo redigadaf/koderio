@@ -21,8 +21,7 @@ export default function TeamGrid() {
                     className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
                 >
                     <div>
-                        <div className="flex items-center gap-2 mb-4">
-                            <Sparkles className="text-purple-500" size={20} />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100/50 text-purple-600 font-bold text-sm mb-6 border border-purple-200 backdrop-blur-sm">
                             <span className="text-purple-600 font-bold tracking-wider uppercase text-sm">Our Experts</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-slate-900">

@@ -43,7 +43,6 @@ export default function ServicesSection() {
                             transition={{ duration: 0.4 }}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-purple-600 font-bold text-xs mb-6"
                         >
-                            <Sparkles size={14} className="fill-purple-600" />
                             <span className="tracking-wider uppercase">Our Expertise</span>
                         </motion.div>
 

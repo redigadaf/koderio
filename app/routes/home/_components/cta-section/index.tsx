@@ -64,7 +64,6 @@ export function LetsWorkTogether() {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-200"
           >
-            <Sparkles className="w-4 h-4 text-purple-600" />
             <span className="text-sm font-semibold text-purple-700">Let's Create Something Amazing</span>
           </motion.div>
 

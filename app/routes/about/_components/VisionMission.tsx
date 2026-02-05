@@ -40,7 +40,6 @@ export default function VisionMission() {
                                     transition={{ duration: 0.2 }}
                                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-purple-500/30 text-purple-200 font-bold text-sm mb-8 backdrop-blur-md cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.5)]"
                                 >
-                                    <Sparkles size={14} className="fill-purple-200 animate-pulse" />
                                     <span>Core Values</span>
                                 </motion.div>
 

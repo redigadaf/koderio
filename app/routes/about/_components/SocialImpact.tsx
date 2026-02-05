@@ -22,7 +22,6 @@ export default function SocialImpact() {
                     className="text-center mb-16"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100/50 text-purple-600 font-bold text-sm mb-6 border border-purple-200 backdrop-blur-sm">
-                        <Sparkles size={14} className="fill-purple-500 text-purple-500 animate-pulse" />
                         <span className="tracking-wide uppercase">Giving Back</span>
                     </div>
 

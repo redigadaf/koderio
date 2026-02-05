@@ -1,15 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { aboutData } from '../_data/aboutData';
 import { fadeInUp, staggerContainer, scrollViewport } from './animations';
 
 export default function AboutHero() {
-    // Word animation setup
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 2.5;
+            const playVideo = async () => {
+                try {
+                    await videoRef.current?.play();
+                } catch (err) {
+                    // Autoplay might be blocked without user interaction, but muted should work
+                    console.log("Video autoplay prevented:", err);
+                }
+            };
+            playVideo();
+        }
+    }, []);
+
     const titleWords = "We build digital experiences that matter.".split(" ");
 
     return (
         <section className="pt-32 pb-20 px-6 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+
             {/* Grid Pattern Background - Purple Tinted Animated */}
             <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8c7ce00a_1px,transparent_1px),linear-gradient(to_bottom,#8c7ce00a_1px,transparent_1px)] bg-[size:40px_40px]">
                 <motion.div
@@ -113,7 +131,7 @@ export default function AboutHero() {
                         </motion.div>
                     </div>
 
-                    {/* Right Video - DECOUPLED ANIMATION */}
+                    {/* Right Video - Restored & Animated */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -135,10 +153,7 @@ export default function AboutHero() {
                                     <p className="text-2xl font-bold">Jakarta, ID</p>
                                 </div>
                                 <video
-                                    key="office-video"
-                                    ref={(el) => {
-                                        if (el) el.playbackRate = 2.5;
-                                    }}
+                                    ref={videoRef}
                                     autoPlay
                                     loop
                                     muted
