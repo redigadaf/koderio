@@ -21,7 +21,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                 className="space-y-12"
             >
                 <div className="flex items-center gap-4 mb-8">
-                    <div className={`p-4 ${theme.accent} rounded-2xl`}>
+                    <div className={`p-4 bg-gradient-to-br ${theme.accent} rounded-2xl`}>
                         <Code className="w-8 h-8 text-white" />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight">Technical Specifications</h2>
@@ -37,7 +37,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         className={`p-8 rounded-3xl border-2 ${theme.border} bg-background shadow-xl ${theme.glow}`}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className={`p-3 ${theme.accent} rounded-xl`}>
+                            <div className={`p-3 bg-gradient-to-br ${theme.accent} rounded-xl`}>
                                 <Palette className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-foreground">Color Palette</h3>
@@ -70,7 +70,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         className={`p-8 rounded-3xl border-2 ${theme.border} bg-background shadow-xl ${theme.glow}`}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className={`p-3 ${theme.accent} rounded-xl`}>
+                            <div className={`p-3 bg-gradient-to-br ${theme.accent} rounded-xl`}>
                                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                                 </svg>
@@ -110,7 +110,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         className={`p-8 rounded-3xl border-2 ${theme.border} bg-gradient-to-br from-background to-muted/30 shadow-xl ${theme.glow}`}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className={`p-3 ${theme.accent} rounded-xl`}>
+                            <div className={`p-3 bg-gradient-to-br ${theme.accent} rounded-xl`}>
                                 <Code className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-xl font-black text-foreground uppercase tracking-wide">Frameworks</h3>
@@ -118,7 +118,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         <ul className="space-y-3">
                             {techSpecs.frameworks.map((framework, index) => (
                                 <li key={index} className="flex items-center gap-3">
-                                    <span className={`w-2 h-2 ${theme.accent} rounded-full`}></span>
+                                    <span className={`w-2 h-2 bg-gradient-to-br ${theme.accent} rounded-full`}></span>
                                     <span className="text-foreground font-medium">{framework}</span>
                                 </li>
                             ))}
@@ -134,7 +134,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         className={`p-8 rounded-3xl border-2 ${theme.border} bg-gradient-to-br from-background to-muted/30 shadow-xl ${theme.glow}`}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className={`p-3 ${theme.accent} rounded-xl`}>
+                            <div className={`p-3 bg-gradient-to-br ${theme.accent} rounded-xl`}>
                                 <Layers className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-xl font-black text-foreground uppercase tracking-wide">Technologies</h3>
@@ -142,7 +142,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         <ul className="space-y-3">
                             {techSpecs.technologies.map((tech, index) => (
                                 <li key={index} className="flex items-center gap-3">
-                                    <span className={`w-2 h-2 ${theme.accent} rounded-full`}></span>
+                                    <span className={`w-2 h-2 bg-gradient-to-br ${theme.accent} rounded-full`}></span>
                                     <span className="text-foreground font-medium">{tech}</span>
                                 </li>
                             ))}
@@ -158,7 +158,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         className={`p-8 rounded-3xl border-2 ${theme.border} bg-gradient-to-br from-background to-muted/30 shadow-xl ${theme.glow}`}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className={`p-3 ${theme.accent} rounded-xl`}>
+                            <div className={`p-3 bg-gradient-to-br ${theme.accent} rounded-xl`}>
                                 <Wrench className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-xl font-black text-foreground uppercase tracking-wide">Tools</h3>
@@ -166,7 +166,7 @@ export default function TechnicalSpecs({ techSpecs, theme }: TechnicalSpecsProps
                         <ul className="space-y-3">
                             {techSpecs.tools.map((tool, index) => (
                                 <li key={index} className="flex items-center gap-3">
-                                    <span className={`w-2 h-2 ${theme.accent} rounded-full`}></span>
+                                    <span className={`w-2 h-2 bg-gradient-to-br ${theme.accent} rounded-full`}></span>
                                     <span className="text-foreground font-medium">{tool}</span>
                                 </li>
                             ))}

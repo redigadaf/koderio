@@ -98,10 +98,7 @@ export default function CTASection({ service }: CTASectionProps) {
                                 whileHover={{ x: "100%" }}
                                 transition={{ duration: 0.5 }}
                             />
-                            <span className="relative z-10 flex items-center gap-2">
-                                Start a Project
-                                <Sparkles className="w-5 h-5" />
-                            </span>
+                            Start a Project
                         </motion.button>
                         <Link href="/routes/work">
                             <motion.button

@@ -28,7 +28,7 @@ export default function ProjectOverview({ theme }: ProjectOverviewProps) {
                     className="space-y-8"
                 >
                     <div className="flex items-center gap-4 mb-8">
-                        <div className={`p-4 ${theme.accent} rounded-2xl`}>
+                        <div className={`p-4 bg-gradient-to-br ${theme.accent} rounded-2xl`}>
                             <Target className="w-8 h-8 text-white" />
                         </div>
                         <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight">Overview</h2>

@@ -51,7 +51,7 @@ export default function FeatureShowcase({ imageUrl, theme }: FeatureShowcaseProp
                         className={`space-y-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
                     >
                         <div className="space-y-4">
-                            <span className={`inline-block px-4 py-2 ${theme.accent} text-white text-xs font-bold uppercase tracking-widest rounded-full`}>
+                            <span className={`inline-block px-4 py-2 bg-gradient-to-br ${theme.accent} text-white text-xs font-bold uppercase tracking-widest rounded-full`}>
                                 Feature {index + 1}
                             </span>
                             <h3 className="text-3xl md:text-5xl font-black text-foreground">

@@ -42,7 +42,7 @@ export default function ProjectChallenge({ theme }: ProjectChallengeProps) {
                 className="space-y-12"
             >
                 <div className="flex items-center gap-4 mb-8">
-                    <div className={`p-4 ${theme.accent} rounded-2xl`}>
+                    <div className={`p-4 bg-gradient-to-br ${theme.accent} rounded-2xl`}>
                         <Lightbulb className="w-8 h-8 text-white" />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight">The Challenge</h2>
@@ -59,7 +59,7 @@ export default function ProjectChallenge({ theme }: ProjectChallengeProps) {
                             whileHover={{ y: -8, scale: 1.02 }}
                             className={`group p-8 rounded-3xl border-2 border-border bg-background hover:${theme.border} transition-all duration-300 shadow-lg hover:shadow-2xl`}
                         >
-                            <div className={`inline-flex p-3 ${theme.accent} rounded-xl mb-4 group-hover:scale-110 transition-transform`}>
+                            <div className={`inline-flex p-3 bg-gradient-to-br ${theme.accent} rounded-xl mb-4 group-hover:scale-110 transition-transform`}>
                                 <challenge.icon className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:${theme.text} transition-colors">

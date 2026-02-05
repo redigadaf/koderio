@@ -31,30 +31,30 @@ export const servicesData: Record<string, ServiceData> = {
         description: 'Transform your ideas into powerful, scalable web applications. We specialize in creating custom web solutions that drive business growth and deliver exceptional user experiences.',
         iconName: 'Code',
         color: {
-            primary: 'from-blue-600 to-cyan-600',
-            accent: 'bg-blue-600',
-            gradient: 'from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950'
+            primary: 'from-purple-600 to-blue-600',
+            accent: 'bg-purple-600',
+            gradient: 'from-purple-50 to-blue-50 dark:from-purple-950 dark:to-blue-950'
         },
         features: [
             {
                 title: 'Full-Stack Development',
                 description: 'End-to-end web solutions using modern frameworks like Next.js, React, and Node.js',
-                icon: '🚀'
+                icon: 'Layers'
             },
             {
                 title: 'Responsive Design',
                 description: 'Mobile-first approach ensuring perfect experience across all devices',
-                icon: '📱'
+                icon: 'LayoutTemplate'
             },
             {
                 title: 'Performance Optimization',
                 description: 'Lightning-fast load times and smooth interactions for better user engagement',
-                icon: '⚡'
+                icon: 'Zap'
             },
             {
                 title: 'SEO Friendly',
                 description: 'Built with SEO best practices to improve your search engine rankings',
-                icon: '🔍'
+                icon: 'Search'
             }
         ],
         benefits: [
@@ -104,22 +104,22 @@ export const servicesData: Record<string, ServiceData> = {
             {
                 title: 'Cross-Platform Development',
                 description: 'Build once, deploy everywhere with React Native and Flutter',
-                icon: '📲'
+                icon: 'Smartphone'
             },
             {
                 title: 'Native Performance',
                 description: 'Smooth, responsive apps that feel native on every platform',
-                icon: '⚡'
+                icon: 'Gauge'
             },
             {
                 title: 'Offline Capability',
                 description: 'Apps that work seamlessly even without internet connection',
-                icon: '🔄'
+                icon: 'WifiOff'
             },
             {
                 title: 'Push Notifications',
                 description: 'Keep users engaged with timely, personalized notifications',
-                icon: '🔔'
+                icon: 'Bell'
             }
         ],
         benefits: [
@@ -161,30 +161,30 @@ export const servicesData: Record<string, ServiceData> = {
         description: 'Design experiences that users love. We create intuitive, visually stunning interfaces that not only look great but also solve real user problems and drive conversions.',
         iconName: 'Palette',
         color: {
-            primary: 'from-orange-600 to-red-600',
-            accent: 'bg-orange-600',
-            gradient: 'from-orange-50 to-red-50 dark:from-orange-950 dark:to-red-950'
+            primary: 'from-purple-600 to-orange-600',
+            accent: 'bg-purple-600',
+            gradient: 'from-purple-50 to-orange-50 dark:from-purple-950 dark:to-orange-950'
         },
         features: [
             {
                 title: 'User Research',
                 description: 'Deep understanding of your users through research and analysis',
-                icon: '🔍'
+                icon: 'Users'
             },
             {
                 title: 'Wireframing & Prototyping',
                 description: 'Interactive prototypes to validate ideas before development',
-                icon: '📐'
+                icon: 'Frame'
             },
             {
                 title: 'Visual Design',
                 description: 'Beautiful interfaces that align with your brand identity',
-                icon: '🎨'
+                icon: 'Palette'
             },
             {
                 title: 'Usability Testing',
                 description: 'Validate designs with real users to ensure optimal experience',
-                icon: '✅'
+                icon: 'CheckCircle'
             }
         ],
         benefits: [

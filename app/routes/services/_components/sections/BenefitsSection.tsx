@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
 import { ServiceData } from '../../_data/servicesData';
 import { containerVariants, itemVariants } from '../animations/variants';
 
@@ -41,17 +40,32 @@ export default function BenefitsSection({ service }: BenefitsSectionProps) {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            whileHover={{ scale: 1.05, x: 5 }}
-                            className="flex items-start gap-4 p-6 rounded-2xl bg-background/80 backdrop-blur-sm border-2 border-border/50 shadow-lg hover:shadow-xl transition-all group"
+                            whileHover={{ y: -5 }}
+                            className="group relative h-full flex flex-col justify-between"
                         >
-                            <motion.div
-                                className={`flex-shrink-0 w-8 h-8 rounded-full ${service.color.accent} flex items-center justify-center mt-1`}
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Check className="w-5 h-5 text-white" />
-                            </motion.div>
-                            <p className="text-foreground font-semibold text-lg group-hover:text-purple-600 transition-colors">{benefit}</p>
+                            {/* Card Background & Border */}
+                            <div className="absolute inset-0 bg-background/90 backdrop-blur-xl rounded-2xl border border-black/5 dark:border-white/10 shadow-sm group-hover:shadow-xl transition-all duration-300" />
+
+                            {/* Hover Gradient Border Effect */}
+                            <div className={`absolute inset-0 rounded-2xl p-[2px] bg-gradient-to-br ${service.color.primary} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />
+
+                            <div className="relative p-8 z-10">
+                                {/* Header: Number & Line */}
+                                <div className="flex items-center gap-4 mb-4">
+                                    <span className={`font-mono text-xl font-black bg-gradient-to-r ${service.color.primary} bg-clip-text text-transparent`}>
+                                        {(index + 1).toString().padStart(2, '0')}
+                                    </span>
+                                    <div className={`h-[2px] w-12 rounded-full bg-gradient-to-r ${service.color.primary} opacity-30 group-hover:w-full group-hover:opacity-100 transition-all duration-500`} />
+                                </div>
+
+                                {/* Content */}
+                                <h3 className="text-xl font-bold leading-relaxed text-foreground group-hover:text-foreground transition-colors">
+                                    {benefit}
+                                </h3>
+                            </div>
+
+                            {/* Bottom Ambient Glow */}
+                            <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${service.color.primary} opacity-[0.05] group-hover:opacity-10 blur-3xl rounded-tl-full transition-opacity duration-500`} />
                         </motion.div>
                     ))}
                 </motion.div>

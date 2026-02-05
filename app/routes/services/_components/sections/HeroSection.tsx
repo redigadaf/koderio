@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, MotionValue } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { ArrowRight, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { ServiceData } from '../../_data/servicesData';
@@ -15,6 +16,26 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ service, Icon, heroY, heroOpacity, heroScale, heroRef }: HeroSectionProps) {
+    const [particles, setParticles] = useState<Array<{
+        id: number;
+        x: number;
+        initialY: number;
+        targetY: number;
+        duration: number;
+        delay: number;
+    }>>([]);
+
+    useEffect(() => {
+        setParticles([...Array(15)].map((_, i) => ({
+            id: i,
+            x: Math.random() * window.innerWidth,
+            initialY: Math.random() * 800,
+            targetY: window.innerHeight,
+            duration: 4 + Math.random() * 3,
+            delay: Math.random() * 3
+        })));
+    }, []);
+
     return (
         <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20">
             {/* Animated Background Gradient */}
@@ -59,23 +80,24 @@ export default function HeroSection({ service, Icon, heroY, heroOpacity, heroSca
                 />
 
                 {/* Floating Particles */}
-                {[...Array(15)].map((_, i) => (
+                {/* Floating Particles */}
+                {particles.map((particle) => (
                     <motion.div
-                        key={i}
+                        key={particle.id}
                         className="absolute w-2 h-2 bg-white/20 rounded-full"
                         initial={{
-                            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1000,
-                            y: typeof window !== 'undefined' ? Math.random() * 800 : Math.random() * 800,
+                            x: particle.x,
+                            y: particle.initialY,
                         }}
                         animate={{
-                            y: [null, -150, typeof window !== 'undefined' ? window.innerHeight : 800],
+                            y: [null, -150, particle.targetY],
                             opacity: [0, 1, 0],
                             scale: [0, 1, 0]
                         }}
                         transition={{
-                            duration: 4 + Math.random() * 3,
+                            duration: particle.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 3,
+                            delay: particle.delay,
                             ease: "linear"
                         }}
                     />

@@ -143,7 +143,7 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                                 bounce: 0.5
                             }}
                             whileHover={{ scale: 1.05 }}
-                            className={`inline-block px-4 py-2 ${theme.accent} text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg ${theme.glow}`}
+                            className={`inline-block px-4 py-2 bg-gradient-to-br ${theme.accent} text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg ${theme.glow}`}
                         >
                             {project.category}
                         </motion.span>
