@@ -37,7 +37,7 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-1">
-                        <Link href="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
+                        <Link href="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
                             Koderio
                         </Link>
                         <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm">

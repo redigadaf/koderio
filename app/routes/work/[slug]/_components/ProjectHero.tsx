@@ -87,7 +87,7 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
                     key={i}
                     className="absolute w-2 h-2 bg-white/30 rounded-full"
                     initial={{
-                        x: Math.random() * window.innerWidth,
+                        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
                         y: Math.random() * 550,
                     }}
                     animate={{
