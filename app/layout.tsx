@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Koderio",
-  description: "Koderio - Digital Solutions",
+  title: "Koderio - Digital Solutions",
+  description: "Koderio is a software development company that provides web development, mobile app development, and UI/UX design services.",
   icons: {
     icon: "/favicon.ico",
   },
