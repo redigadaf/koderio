@@ -1,10 +1,10 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { CategoryTheme } from './theme';
-import { useRef } from 'react';
+import { CategoryTheme } from '../utils/theme';
 
 interface ProjectHeroProps {
     project: {
@@ -18,6 +18,12 @@ interface ProjectHeroProps {
 
 export default function ProjectHero({ project, theme }: ProjectHeroProps) {
     const ref = useRef<HTMLElement>(null);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end start"]
@@ -82,26 +88,29 @@ export default function ProjectHero({ project, theme }: ProjectHeroProps) {
             </div>
 
             {/* Floating Particles */}
-            {[...Array(8)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/30 rounded-full"
-                    initial={{
-                        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                        y: Math.random() * 550,
-                    }}
-                    animate={{
-                        y: [null, -100, 550],
-                        opacity: [0, 1, 0]
-                    }}
-                    transition={{
-                        duration: 3 + Math.random() * 2,
-                        repeat: Infinity,
-                        delay: Math.random() * 2,
-                        ease: "linear"
-                    }}
-                />
-            ))}
+            {/* Floating Particles - Client Side Only to prevent Hydration Error */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {isClient && [...Array(8)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute w-2 h-2 bg-white/30 rounded-full"
+                        initial={{
+                            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+                            y: Math.random() * 550,
+                        }}
+                        animate={{
+                            y: [null, -100, 550],
+                            opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                            duration: 3 + Math.random() * 2,
+                            repeat: Infinity,
+                            delay: Math.random() * 2,
+                            ease: "linear"
+                        }}
+                    />
+                ))}
+            </div>
 
             {/* Content */}
             <motion.div

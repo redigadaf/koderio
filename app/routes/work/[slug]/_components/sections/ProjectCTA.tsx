@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { fadeInUpVariants } from '../utils/animations';
 
 interface ProjectCTAProps {
     theme: CategoryTheme;
@@ -13,10 +14,10 @@ export default function ProjectCTA({ theme }: ProjectCTAProps) {
     return (
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                variants={fadeInUpVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
                 className={`relative p-12 md:p-16 rounded-3xl bg-gradient-to-br ${theme.primary} overflow-hidden shadow-2xl`}
             >
                 {/* Background Pattern */}

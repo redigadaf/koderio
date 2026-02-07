@@ -73,26 +73,6 @@ export function WorkCard({ project, index }: WorkCardProps) {
                         transition={{ duration: 0.3 }}
                     />
 
-                    {/* Floating Action Button */}
-                    <motion.div
-                        className="absolute top-4 right-4"
-                        initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                        animate={{
-                            opacity: isHovered ? 1 : 0,
-                            scale: isHovered ? 1 : 0.8,
-                            y: isHovered ? 0 : -10
-                        }}
-                        transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    >
-                        <motion.div
-                            className="bg-background/90 backdrop-blur-sm p-3 rounded-full shadow-lg border border-white/10"
-                            whileHover={{ scale: 1.1, rotate: 45 }}
-                            transition={{ duration: 0.2 }}
-                        >
-                            <ArrowUpRight className="w-5 h-5 text-foreground" />
-                        </motion.div>
-                    </motion.div>
-
                     {/* Animated Border */}
                     <motion.div
                         className="absolute inset-0 rounded-2xl border-2 border-purple-500/0"

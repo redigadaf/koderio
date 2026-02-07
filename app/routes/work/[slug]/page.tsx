@@ -8,6 +8,22 @@ export function generateStaticParams() {
     }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const resolvedParams = await params;
+    const slug = resolvedParams.slug;
+    const project = PROJECTS.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: 'Project Not Found',
+        };
+    }
+
+    return {
+        title: project.title + ' | Koderio',
+    };
+}
+
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug;

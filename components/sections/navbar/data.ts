@@ -30,19 +30,16 @@ export const navLinks = [
         additionalServices: [
             {
                 title: "Consulting",
-                href: "/routes/services/consulting",
                 description: "Strategic guidance for your digital transformation",
                 icon: MessageSquare
             },
             {
                 title: "MVP Development",
-                href: "/routes/services/mvp",
                 description: "Launch your product idea quickly and efficiently",
                 icon: Rocket
             },
             {
                 title: "Branding",
-                href: "/routes/services/branding",
                 description: "Create a memorable brand identity",
                 icon: Sparkles
             },

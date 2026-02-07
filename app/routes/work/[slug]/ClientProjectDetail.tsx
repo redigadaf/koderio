@@ -1,16 +1,18 @@
 'use client';
 
 import { Project } from '../_components/data';
-import { getCategoryTheme } from './_components/theme';
-import ProjectHero from './_components/ProjectHero';
-import ProjectInfoGrid from './_components/ProjectInfoGrid';
-import ProjectOverview from './_components/ProjectOverview';
-import TechnicalSpecs from './_components/TechnicalSpecs';
-import ProjectChallenge from './_components/ProjectChallenge';
-import ProjectSolution from './_components/ProjectSolution';
-import FeatureShowcase from './_components/FeatureShowcase';
-import ProjectImpact from './_components/ProjectImpact';
-import ProjectCTA from './_components/ProjectCTA';
+import {
+    getCategoryTheme,
+    ProjectHero,
+    ProjectInfoGrid,
+    ProjectOverview,
+    TechnicalSpecs,
+    ProjectChallenge,
+    ProjectSolution,
+    FeatureShowcase,
+    ProjectImpact,
+    ProjectCTA
+} from './_components';
 
 interface ClientProjectDetailProps {
     project: Project;

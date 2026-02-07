@@ -148,7 +148,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                 <Link
                                     key={link.title}
                                     href={link.href}
-                                    className={`block px-3 py-3 rounded-xl text-lg font-medium transition-colors border ${pathname === link.href
+                                    className={`block px-3 py-3 rounded-xl text-lg font-medium transition-colors border ${pathname?.startsWith(link.href)
                                         ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800'
                                         : 'text-foreground hover:bg-purple-50 dark:hover:bg-purple-900/20 active:bg-purple-100 border-transparent'
                                         }`}

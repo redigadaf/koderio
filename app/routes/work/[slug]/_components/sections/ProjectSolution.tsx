@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { containerVariants, fadeInLeftVariants, rotateCWVariants, rotateCCWVariants } from '../utils/animations';
 
 interface ProjectSolutionProps {
     theme: CategoryTheme;
@@ -32,35 +33,23 @@ export default function ProjectSolution({ theme }: ProjectSolutionProps) {
             {/* Animated Background Elements */}
             <div className="absolute inset-0 opacity-10">
                 <motion.div
-                    animate={{
-                        rotate: 360,
-                    }}
-                    transition={{
-                        duration: 30,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
+                    variants={rotateCWVariants}
+                    animate="animate"
                     className="absolute top-0 right-0 w-96 h-96 border-4 border-white rounded-full"
                 />
                 <motion.div
-                    animate={{
-                        rotate: -360,
-                    }}
-                    transition={{
-                        duration: 40,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
+                    variants={rotateCCWVariants}
+                    animate="animate"
                     className="absolute bottom-0 left-0 w-96 h-96 border-4 border-white rounded-full"
                 />
             </div>
 
             <div className="max-w-6xl mx-auto px-6 relative">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, margin: "-100px" }}
                     className="space-y-12"
                 >
                     <div className="flex items-center gap-4 mb-8">
@@ -74,10 +63,7 @@ export default function ProjectSolution({ theme }: ProjectSolutionProps) {
                         {solutions.map((solution, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
+                                variants={fadeInLeftVariants}
                                 className="flex gap-6 items-start"
                             >
                                 <div className="text-6xl md:text-8xl font-black text-white/20 leading-none">

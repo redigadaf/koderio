@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { containerVariants, scaleInVariants } from '../utils/animations';
 
 interface ProjectImpactProps {
     theme: CategoryTheme;
@@ -21,10 +22,10 @@ export default function ProjectImpact({ theme }: ProjectImpactProps) {
 
             <div className="max-w-6xl mx-auto px-6 relative">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, margin: "-100px" }}
                     className="text-center space-y-12"
                 >
                     <div className="space-y-6">
@@ -40,10 +41,7 @@ export default function ProjectImpact({ theme }: ProjectImpactProps) {
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                variants={scaleInVariants}
                                 whileHover={{ y: -10, scale: 1.05 }}
                                 className={`p-10 rounded-3xl border-2 ${theme.border} bg-background shadow-xl ${theme.glow} transition-all`}
                             >

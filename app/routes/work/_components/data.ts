@@ -1,3 +1,10 @@
+
+export interface TechItem {
+    name: string;
+    iconKey: string;
+    color?: string;
+}
+
 export interface ProjectTechSpecs {
     colors: {
         primary: string;
@@ -10,9 +17,9 @@ export interface ProjectTechSpecs {
         bodyFont: string;
         fontPairings: string;
     };
-    frameworks: string[];
+    frameworks: TechItem[];
     technologies: string[];
-    tools: string[];
+    tools: TechItem[];
 }
 
 export interface Project {
@@ -49,9 +56,17 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'Inter',
                 fontPairings: 'Modern Sans-Serif Combination',
             },
-            frameworks: ['Next.js 14', 'React 18', 'TypeScript'],
+            frameworks: [
+                { name: 'Next.js 14', iconKey: 'SiNextdotjs', color: '#000000' }, // White for dark bg
+                { name: 'React 18', iconKey: 'SiReact', color: '#61DAFB' },
+                { name: 'TypeScript', iconKey: 'SiTypescript', color: '#3178C6' }
+            ],
             technologies: ['Framer Motion', 'Three.js', 'GSAP', 'Tailwind CSS'],
-            tools: ['Figma', 'Adobe After Effects', 'Blender'],
+            tools: [
+                { name: 'Figma', iconKey: 'SiFigma', color: '#F24E1E' },
+                { name: 'Adobe After Effects', iconKey: 'SiAdobeaftereffects', color: '#9999FF' },
+                { name: 'Blender', iconKey: 'SiBlender', color: '#F5792A' }
+            ],
         },
     },
     {
@@ -75,9 +90,16 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'Open Sans',
                 fontPairings: 'Clean & Professional',
             },
-            frameworks: ['Adobe Illustrator', 'Adobe InDesign'],
+            frameworks: [
+                { name: 'Adobe Illustrator', iconKey: 'SiAdobeillustrator', color: '#FF9A00' },
+                { name: 'Adobe InDesign', iconKey: 'SiAdobeindesign', color: '#FF3366' }
+            ],
             technologies: ['Brand Guidelines System', 'Design Tokens'],
-            tools: ['Figma', 'Adobe Creative Suite', 'Sketch'],
+            tools: [
+                { name: 'Figma', iconKey: 'SiFigma', color: '#F24E1E' },
+                { name: 'Adobe Creative Suite', iconKey: 'SiAdobecreativecloud', color: '#DA1F26' },
+                { name: 'Sketch', iconKey: 'SiSketch', color: '#F7B500' }
+            ],
         },
     },
     {
@@ -101,9 +123,19 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'Inter',
                 fontPairings: 'Professional Dashboard Style',
             },
-            frameworks: ['React', 'Node.js', 'Express', 'PostgreSQL'],
+            frameworks: [
+                { name: 'React', iconKey: 'SiReact', color: '#61DAFB' },
+                { name: 'Node.js', iconKey: 'SiNodedotjs', color: '#339933' },
+                { name: 'Express', iconKey: 'SiExpress', color: '#000000' },
+                { name: 'PostgreSQL', iconKey: 'SiPostgresql', color: '#4169E1' }
+            ],
             technologies: ['Chart.js', 'D3.js', 'Redux Toolkit', 'Socket.io'],
-            tools: ['VS Code', 'Docker', 'GitHub Actions', 'Postman'],
+            tools: [
+                { name: 'VS Code', iconKey: 'Code2', color: '#007ACC' },
+                { name: 'Docker', iconKey: 'SiDocker', color: '#2496ED' },
+                { name: 'GitHub Actions', iconKey: 'SiGithubactions', color: '#2088FF' },
+                { name: 'Postman', iconKey: 'SiPostman', color: '#FF6C37' }
+            ],
         },
     },
     {
@@ -127,9 +159,18 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'Lato',
                 fontPairings: 'Elegant Serif & Sans',
             },
-            frameworks: ['Next.js', 'React Three Fiber', 'TypeScript'],
+            frameworks: [
+                { name: 'Next.js', iconKey: 'SiNextdotjs', color: '#FFFFFF' }, // White for dark bg
+                { name: 'React Three Fiber', iconKey: 'SiReact', color: '#61DAFB' },
+                { name: 'TypeScript', iconKey: 'SiTypescript', color: '#3178C6' }
+            ],
             technologies: ['Three.js', 'WebGL', 'GSAP', 'Prisma'],
-            tools: ['Figma', 'Blender', 'Spline', 'Photoshop'],
+            tools: [
+                { name: 'Figma', iconKey: 'SiFigma', color: '#F24E1E' },
+                { name: 'Blender', iconKey: 'SiBlender', color: '#F5792A' },
+                { name: 'Spline', iconKey: 'Box', color: '#EB2875' },
+                { name: 'Photoshop', iconKey: 'SiAdobephotoshop', color: '#31A8FF' }
+            ],
         },
     },
     {
@@ -153,9 +194,19 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'IBM Plex Mono',
                 fontPairings: 'Tech-Focused Monospace',
             },
-            frameworks: ['Vue.js 3', 'Python', 'FastAPI', 'MongoDB'],
+            frameworks: [
+                { name: 'Vue.js 3', iconKey: 'SiVuedotjs', color: '#4FC08D' },
+                { name: 'Python', iconKey: 'SiPython', color: '#3776AB' },
+                { name: 'FastAPI', iconKey: 'SiFastapi', color: '#009688' },
+                { name: 'MongoDB', iconKey: 'SiMongodb', color: '#47A248' }
+            ],
             technologies: ['WebAssembly', 'TensorFlow.js', 'Plotly', 'Pinia'],
-            tools: ['VS Code', 'Jupyter', 'Docker', 'Kubernetes'],
+            tools: [
+                { name: 'VS Code', iconKey: 'Code2', color: '#007ACC' },
+                { name: 'Jupyter', iconKey: 'SiJupyter', color: '#F37626' },
+                { name: 'Docker', iconKey: 'SiDocker', color: '#2496ED' },
+                { name: 'Kubernetes', iconKey: 'SiKubernetes', color: '#326CE5' }
+            ],
         },
     },
     {
@@ -179,9 +230,20 @@ export const PROJECTS: Project[] = [
                 bodyFont: 'Montserrat',
                 fontPairings: 'Luxury Serif & Modern Sans',
             },
-            frameworks: ['Shopify', 'Liquid', 'JavaScript'],
-            technologies: ['Shopify API', 'Stripe', 'Klaviyo', 'CSS Grid'],
-            tools: ['Figma', 'Adobe Illustrator', 'Photoshop', 'Lightroom'],
+            frameworks: [
+                { name: 'Shopify', iconKey: 'SiShopify', color: '#95BF47' },
+                { name: 'Liquid', iconKey: 'Droplet', color: '#2563EB' },
+                { name: 'JavaScript', iconKey: 'SiJavascript', color: '#F7DF1E' }
+            ],
+            technologies: [
+                'Shopify API', 'Stripe', 'Klaviyo', 'CSS Grid'
+            ],
+            tools: [
+                { name: 'Figma', iconKey: 'SiFigma', color: '#F24E1E' },
+                { name: 'Adobe Illustrator', iconKey: 'SiAdobeillustrator', color: '#FF9A00' },
+                { name: 'Photoshop', iconKey: 'SiAdobephotoshop', color: '#31A8FF' },
+                { name: 'Lightroom', iconKey: 'SiAdobelightroomclassic', color: '#31A8FF' }
+            ],
         },
     },
 ];

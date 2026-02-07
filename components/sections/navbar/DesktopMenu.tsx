@@ -143,7 +143,7 @@ export const DesktopMenu = () => {
                         <motion.div key={link.title} whileHover={{ scale: 1.05 }} className="inline-block">
                             <Link
                                 href={link.href}
-                                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 ${pathname === link.href
+                                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-2 after:left-3 after:h-[2px] after:bg-purple-600 dark:after:bg-purple-400 after:transition-all after:duration-300 ${pathname?.startsWith(link.href)
                                     ? 'text-purple-600 dark:text-purple-400 font-bold after:w-[calc(100%-24px)]'
                                     : 'text-foreground hover:text-primary hover:font-semibold after:w-0 hover:after:w-[calc(100%-24px)]'
                                     }`}

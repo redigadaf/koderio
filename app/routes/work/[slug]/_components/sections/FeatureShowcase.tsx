@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { containerVariants, cardVariants } from '../utils/animations';
 
 interface FeatureShowcaseProps {
     imageUrl: string;
@@ -27,10 +28,10 @@ export default function FeatureShowcase({ imageUrl, theme }: FeatureShowcaseProp
     return (
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-32">
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
                 className="space-y-20"
             >
                 <div className="text-center space-y-4">
@@ -44,10 +45,7 @@ export default function FeatureShowcase({ imageUrl, theme }: FeatureShowcaseProp
                 {features.map((feature, index) => (
                     <motion.div
                         key={index}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: index * 0.2 }}
+                        variants={cardVariants}
                         className={`space-y-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
                     >
                         <div className="space-y-4">

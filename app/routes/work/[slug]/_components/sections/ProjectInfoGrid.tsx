@@ -1,49 +1,14 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Calendar, Layers, Rocket } from 'lucide-react';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { containerVariants, cardVariants, listItemVariants } from '../utils/animations';
 
 interface ProjectInfoGridProps {
     year: string;
     theme: CategoryTheme;
 }
-
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2,
-            delayChildren: 0.1
-        }
-    }
-};
-
-const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            duration: 0.8,
-            ease: "easeOut"
-        }
-    }
-};
-
-const listItemVariants: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (i: number) => ({
-        opacity: 1,
-        x: 0,
-        transition: {
-            delay: i * 0.1,
-            duration: 0.4
-        }
-    })
-};
 
 export default function ProjectInfoGrid({ year, theme }: ProjectInfoGridProps) {
     const deliverables = ['Product Design', 'Web Development', 'Brand Identity'];
@@ -120,7 +85,6 @@ export default function ProjectInfoGrid({ year, theme }: ProjectInfoGridProps) {
                     </motion.div>
                 </motion.div>
 
-                {/* Timeline */}
                 {/* Timeline */}
                 <motion.div variants={cardVariants} className="h-full">
                     <motion.div

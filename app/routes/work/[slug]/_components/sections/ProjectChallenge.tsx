@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Lightbulb, Users, Layers, TrendingUp, Rocket } from 'lucide-react';
-import { CategoryTheme } from './theme';
+import { CategoryTheme } from '../utils/theme';
+import { containerVariants, cardVariants } from '../utils/animations';
 
 interface ProjectChallengeProps {
     theme: CategoryTheme;
@@ -35,10 +36,10 @@ export default function ProjectChallenge({ theme }: ProjectChallengeProps) {
     return (
         <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
                 className="space-y-12"
             >
                 <div className="flex items-center gap-4 mb-8">
@@ -52,10 +53,7 @@ export default function ProjectChallenge({ theme }: ProjectChallengeProps) {
                     {challenges.map((challenge, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            variants={cardVariants}
                             whileHover={{ y: -8, scale: 1.02 }}
                             className={`group p-8 rounded-3xl border-2 border-border bg-background hover:${theme.border} transition-all duration-300 shadow-lg hover:shadow-2xl`}
                         >
