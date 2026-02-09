@@ -87,7 +87,7 @@ export function WorkHeader() {
 
                         <motion.h1
                             variants={itemVariants}
-                            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-[1.1]"
+                            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-[1.31]"
                         >
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}

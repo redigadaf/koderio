@@ -73,7 +73,7 @@ export default function AboutHero() {
 
                         <div className="mb-8 overflow-hidden">
                             <motion.h1
-                                className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight flex flex-wrap gap-x-4"
+                                className="text-5xl md:text-7xl font-bold leading-[1.31] tracking-tight flex flex-wrap gap-x-4"
                                 variants={staggerContainer}
                                 initial="hidden"
                                 whileInView="visible"

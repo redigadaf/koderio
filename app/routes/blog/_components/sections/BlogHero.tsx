@@ -98,13 +98,13 @@ export default function BlogHero() {
                     >
                         <motion.span
                             variants={slideReveal}
-                            className="w-fit bg-gradient-to-r from-foreground via-purple-600 to-pink-600 bg-clip-text text-transparent"
+                            className="w-fit pb-4 bg-gradient-to-r from-foreground via-purple-600 to-pink-600 bg-clip-text text-transparent"
                         >
                             Insights &
                         </motion.span>
                         <motion.span
                             variants={slideReveal}
-                            className="w-fit mt-2 bg-gradient-to-r from-pink-600 via-purple-600 to-foreground bg-clip-text text-transparent"
+                            className="w-fit pb-4 mt-2 bg-gradient-to-r from-pink-600 via-purple-600 to-foreground bg-clip-text text-transparent"
                         >
                             Innovation
                         </motion.span>
@@ -114,7 +114,7 @@ export default function BlogHero() {
                 {/* Description */}
                 <motion.p
                     variants={fadeInUp}
-                    className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+                    className="text-xl md:text-2xl text-muted-foreground leading-[1.2] max-w-2xl mx-auto pb-2"
                 >
                     Explore expert articles on{' '}
                     <span className="text-purple-600 font-semibold">web development</span>,{' '}
@@ -125,7 +125,7 @@ export default function BlogHero() {
                 {/* Stats */}
                 <motion.div
                     variants={fadeInUp}
-                    className="flex flex-wrap justify-center gap-8 pt-2"
+                    className="flex flex-wrap justify-center gap-8 pb-2 pt-0"
                 >
                     <div className="text-center">
                         <div className="text-3xl md:text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -152,7 +152,7 @@ export default function BlogHero() {
                 {/* Decorative Line */}
                 <motion.div
                     variants={fadeInUp}
-                    className="flex items-center justify-center gap-4 pt-4"
+                    className="flex items-center justify-center gap-4 pt-0"
                 >
                     <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
                     <BookOpen className="w-5 h-5 text-purple-500" />
