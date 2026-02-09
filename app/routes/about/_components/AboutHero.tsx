@@ -73,7 +73,7 @@ export default function AboutHero() {
 
                         <div className="mb-8 overflow-hidden">
                             <motion.h1
-                                className="text-5xl md:text-7xl font-bold leading-[1.31] tracking-tight flex flex-wrap gap-x-4"
+                                className="text-5xl md:text-7xl font-bold leading-none tracking-tight flex flex-wrap gap-x-4"
                                 variants={staggerContainer}
                                 initial="hidden"
                                 whileInView="visible"
@@ -91,7 +91,7 @@ export default function AboutHero() {
                                                 transition: { type: "spring", stiffness: 100, damping: 20 }
                                             }
                                         }}
-                                        className={word === "digital" || word === "experiences" ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600" : ""}
+                                        className={word === "digital" || word === "experiences" ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600 pb-4" : ""}
                                     >
                                         {word}
                                     </motion.span>

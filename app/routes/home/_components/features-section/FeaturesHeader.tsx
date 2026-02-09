@@ -20,9 +20,9 @@ export const FeaturesHeader = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.3 }}
-                className="max-w-3xl text-4xl md:text-6xl lg:text-7xl font-black tracking-tight"
+                className="max-w-4xl text-4xl font-black tracking-tighter text-foreground sm:text-6xl md:text-8xl"
             >
-                <span className="block text-gray-900">Everything you need</span>
+                <span className="block">Everything you need</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600">
                     to succeed
                 </span>

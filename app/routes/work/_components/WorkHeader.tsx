@@ -87,13 +87,13 @@ export function WorkHeader() {
 
                         <motion.h1
                             variants={itemVariants}
-                            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-[1.31]"
+                            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-none"
                         >
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="inline-block"
+                                className="inline-block pb-4"
                             >
                                 Crafting{' '}
                             </motion.span>
@@ -101,7 +101,7 @@ export function WorkHeader() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8, delay: 0.6, type: "spring", bounce: 0.4 }}
-                                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600"
+                                className="inline-block pb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-600"
                             >
                                 Digital
                             </motion.span>
