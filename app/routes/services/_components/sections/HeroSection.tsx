@@ -80,7 +80,6 @@ export default function HeroSection({ service, Icon, heroY, heroOpacity, heroSca
                 />
 
                 {/* Floating Particles */}
-                {/* Floating Particles */}
                 {particles.map((particle) => (
                     <motion.div
                         key={particle.id}
@@ -182,22 +181,23 @@ export default function HeroSection({ service, Icon, heroY, heroOpacity, heroSca
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
                 >
-                    <Link href="/routes/work">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={`group relative inline-flex items-center gap-2 px-8 py-4 ${service.color.accent} text-white font-bold text-base rounded-full shadow-2xl overflow-hidden`}
-                        >
-                            <motion.div
-                                className="absolute inset-0 bg-white/20"
-                                initial={{ x: "-100%" }}
-                                whileHover={{ x: "100%" }}
-                                transition={{ duration: 0.5 }}
-                            />
-                            <span className="relative z-10">View Our Work</span>
-                            <ArrowRight className="relative z-10 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                        </motion.button>
-                    </Link>
+                    <motion.button
+                        onClick={() => {
+                            document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`group relative inline-flex items-center gap-2 px-8 py-4 ${service.color.accent} text-white font-bold text-base rounded-full shadow-2xl overflow-hidden cursor-pointer`}
+                    >
+                        <motion.div
+                            className="absolute inset-0 bg-white/20"
+                            initial={{ x: "-100%" }}
+                            whileHover={{ x: "100%" }}
+                            transition={{ duration: 0.5 }}
+                        />
+                        <span className="relative z-10">Start a Project</span>
+                        <ArrowRight className="relative z-10 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
                 </motion.div>
             </motion.div>
         </section>

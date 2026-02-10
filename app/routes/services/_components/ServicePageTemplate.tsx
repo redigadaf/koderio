@@ -9,6 +9,7 @@ import FeaturesSection from './sections/FeaturesSection';
 import BenefitsSection from './sections/BenefitsSection';
 import ProcessSection from './sections/ProcessSection';
 import TechnologiesSection from './sections/TechnologiesSection';
+import PortfolioSection from './sections/PortfolioSection';
 import CTASection from './sections/CTASection';
 
 interface ServicePageTemplateProps {
@@ -47,6 +48,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             <BenefitsSection service={service} />
             <ProcessSection service={service} />
             <TechnologiesSection service={service} />
+            <PortfolioSection service={service} />
             <CTASection service={service} />
         </main>
     );

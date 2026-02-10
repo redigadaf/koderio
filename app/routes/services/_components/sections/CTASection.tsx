@@ -5,13 +5,18 @@ import { Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { ServiceData } from '../../_data/servicesData';
 
+import { useState } from 'react';
+import { ContactFormModal } from '@/components/ContactFormModal';
+
 interface CTASectionProps {
     service: ServiceData;
 }
 
 export default function CTASection({ service }: CTASectionProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-        <section className="py-32 max-w-7xl mx-auto px-6">
+        <section id="cta-section" className="py-32 max-w-7xl mx-auto px-6">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -88,9 +93,10 @@ export default function CTASection({ service }: CTASectionProps) {
                         className="flex flex-col sm:flex-row gap-6 justify-center"
                     >
                         <motion.button
+                            onClick={() => setIsModalOpen(true)}
                             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative px-10 py-5 bg-white text-foreground font-bold text-lg rounded-full shadow-2xl overflow-hidden"
+                            className="group relative px-10 py-5 bg-white text-foreground font-bold text-lg rounded-full shadow-2xl overflow-hidden cursor-pointer"
                         >
                             <motion.div
                                 className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100"
@@ -100,18 +106,10 @@ export default function CTASection({ service }: CTASectionProps) {
                             />
                             Start a Project
                         </motion.button>
-                        <Link href="/routes/work">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg rounded-full hover:bg-white/20 transition-all shadow-xl"
-                            >
-                                View Portfolio
-                            </motion.button>
-                        </Link>
                     </motion.div>
                 </div>
             </motion.div>
+            <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }

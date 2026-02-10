@@ -5,11 +5,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
+import { ContactFormModal } from "@/components/ContactFormModal";
+
 export function LetsWorkTogether() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleBookCall = () => {
-    window.open("https://cal.com/jatin-yadav05/15min", "_blank");
+    setIsModalOpen(true);
   };
 
   return (
@@ -208,6 +211,7 @@ export function LetsWorkTogether() {
           </motion.div>
         </div>
       </div>
+      <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </motion.section>
   );
 }

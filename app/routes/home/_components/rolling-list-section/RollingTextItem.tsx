@@ -26,21 +26,21 @@ export function RollingTextItem({ item }: RollingTextItemProps) {
                 <div className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-1/2">
                     {/* State 1: Normal */}
                     <div className="h-[60px] md:h-20 flex items-center">
-                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground uppercase tracking-tighter">
+                        <h3 className="text-3xl md:text-3xl lg:text-6xl font-black text-foreground uppercase tracking-tighter">
                             {item.title}
-                        </h2>
+                        </h3>
                     </div>
 
                     {/* State 2: Hover (Italic + Color) */}
                     <div className="h-[60px] md:h-20 flex items-center">
-                        <h2
+                        <h3
                             className={cn(
-                                "text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic",
+                                "text-3xl md:text-4xl lg:text-6xl font-black uppercase tracking-tighter italic",
                                 colorClassMap[item.color]
                             )}
                         >
                             {item.title}
-                        </h2>
+                        </h3>
                     </div>
                 </div>
             </div>
