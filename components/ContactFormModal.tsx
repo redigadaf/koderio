@@ -21,6 +21,8 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
 
 interface ContactFormModalProps {
     isOpen: boolean;
@@ -87,7 +89,17 @@ export function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
                         ) : (
                             <div className="space-y-2 text-center sm:text-left">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-300 text-xs font-bold uppercase tracking-wider mb-2">
-                                    <Sparkles className="w-3 h-3" />
+                                    <motion.span
+                                        className={`w-2 h-2 bg-primary rounded-full`}
+                                        animate={{
+                                            scale: [0.8, 1, 0.8],
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            delay: 0
+                                        }}
+                                    />
                                     Let's Collaborate
                                 </div>
                                 <DialogTitle className="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 dark:text-white">
